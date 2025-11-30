@@ -1,3 +1,8 @@
 .navbar {
 
 }
+
+.nav {
+  grid-area: nav;
+  background-color: yellow;
+}

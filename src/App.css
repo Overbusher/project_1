@@ -9,24 +9,3 @@
   grid-gap: 5px;
 
 }
-
-.head {
-  grid-area: head;
-  background-color: aqua;
-}
-
-
-.nav {
-  grid-area: nav;
-  background-color: yellow;
-}
-
-.content {
-  grid-area: content;
-  background-color: bisque;
-}
-
-.footer {
-  grid-area: footer;
-  background-color: coral;
-}

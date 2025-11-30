@@ -5,3 +5,8 @@
 .header img {
   width: 100px;
 }
+
+.head {
+  grid-area: head;
+  background-color: aqua;
+}
