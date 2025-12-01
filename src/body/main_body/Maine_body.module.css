@@ -1,8 +1,4 @@
 .main_body {
-
-}
-
-.content {
-  grid-area: content;
+  grid-area: c;
   background-color: bisque;
 }

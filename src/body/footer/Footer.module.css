@@ -1,7 +1,4 @@
 .footer {
-}
-
-.footer {
-  grid-area: footer;
+  grid-area: f;
   background-color: coral;
 }

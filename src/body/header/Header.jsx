@@ -1,11 +1,9 @@
-import './Header.css'
+import st from './Header.module.css'
 
-const Header = () => {
+export const Header = () => {
     return (
-    <div className='header'>
+    <div className={st.header}>
         <img src='https://v.od.ua/uploads/92/logo.png' />
     </div>
 )
 }
-
-export default Header;

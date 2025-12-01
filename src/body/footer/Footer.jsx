@@ -1,7 +1,5 @@
-import './Footer.css'
+import st from './Footer.module.css'
 
-const Footer = () => {
-    return <div className='footer'>SuperPuper FOOTER</div>
+export const Footer = () => {
+    return <div className={st.footer}>SuperPuper FOOTER</div>
 }
-
-export default Footer;

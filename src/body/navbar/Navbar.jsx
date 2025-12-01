@@ -1,11 +1,10 @@
-import './Navbar.css'
-const Navbar = () => {
-    return (<div className='navbar'>
-                <li><a href='#S'>Home</a></li>
-                    <li> <a href='#S'>News</a></li>
-                        <li> <a href='#S'>Feed</a></li>
+import st from './Navbar.module.css'
+
+export const Navbar = () => {
+    return (<div className={st.navbar}>
+            <div><a href='#S'>Home</a></div>
+            <div><a href='#S'>News</a></div>
+            <div><a href='#S'>Feed</a></div>
         </div>
     );
 }
-
-export default Navbar;
