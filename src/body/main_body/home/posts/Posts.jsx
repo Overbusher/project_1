@@ -2,7 +2,7 @@ import st from './Posts.module.css'
 import {Post} from "./post/Post";
 
 
-export const Posts = (props) => {
+export const Posts = () => {
     return (
         <div className={st.posts}>
             <div>
