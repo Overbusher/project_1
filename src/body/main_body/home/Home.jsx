@@ -1,13 +1,13 @@
 import './Home.css'
+import {Posts} from './posts/Posts'
+import {Avatar} from "./avatar/Avatar";
+import {FL_name} from "./fl_name/FL_name";
 
 const Home = () => {
-    return (<div>
-            <div className='home'><img alt="Фон профиля" src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Stars_01_%28MK%29.jpg/960px-Stars_01_%28MK%29.jpg'/></div>
-            <div>Ava</div>
-            <div>Имя и Фамилия</div>
-            <div>Посты:</div>
-            <div>Пост 1</div>
-            <div>Пост 2</div>
+    return (<div className='home'>
+            <Avatar/>
+            <FL_name/>
+            <Posts/>
         </div>
     )
 }
