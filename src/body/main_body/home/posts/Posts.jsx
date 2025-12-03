@@ -1,6 +1,8 @@
 import st from './Posts.module.css'
+import {Post} from "./post/Post";
 
-export const Posts = () => {
+
+export const Posts = (props) => {
     return (
         <div className={st.posts}>
             <div>
@@ -10,26 +12,14 @@ export const Posts = () => {
                 <textarea></textarea>
                 <button>Добавить</button>
             </div>
-            <div>
-                <img alt="ava img."
-                     src='https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'/>
-                Hi! How are you?
-            </div>
-            <div>
-                <img alt="ava img."
-                     src='https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'/>
-                You COOL, BROO!!
-            </div>
-            <div>
-                <img alt="ava img."
-                     src='https://i1.sndcdn.com/artworks-zQNVURezx4vONC0z-XErjxw-t500x500.jpg'/>
-                LIGHT WEIGHT, BABY!!!
-            </div>
-            <div>
-                <img alt="ava img."
-                     src='https://assetsio.gnwcdn.com/elder-scrolls-skyrim-artwork.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp'/>
-                FUS RO DAH!
-            </div>
+            <Post texta='FUS RO DAH!'
+                   srcs='https://assetsio.gnwcdn.com/elder-scrolls-skyrim-artwork.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp'/>
+            <Post texta='LIGHT WEIGHT, BABY!!!'
+                   srcs='https://i1.sndcdn.com/artworks-zQNVURezx4vONC0z-XErjxw-t500x500.jpg'/>
+            <Post texta='You COOL, BROO!!'
+                   srcs='https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'/>
+            <Post texta='Hi! How are you?'
+                   srcs='https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'/>
         </div>
     )
 }
