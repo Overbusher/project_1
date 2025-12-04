@@ -2,6 +2,7 @@ import st from './Maine_body.module.css'
 import Home from "./home/Home";
 import {Messages} from "./messages/Messages";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {News} from "./news/News";
 
 
 export const Maine_body = () => {
@@ -11,6 +12,7 @@ export const Maine_body = () => {
             <Routes>
                 <Route path='/messages' element={<Messages/>}/>
                 <Route path='/home' element={<Home/>}/>
+                <Route path='/news' element={<News/>}/>
             </Routes>
         </div>
         </BrowserRouter>

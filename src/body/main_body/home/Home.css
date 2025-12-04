@@ -5,7 +5,7 @@
   "pst pst";
   grid-auto-rows: auto ;
   grid-template-columns: 1fr 10fr;
-  grid-gap: 5px;
+  grid-gap: 10px;
 }
 
 .home img {

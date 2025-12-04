@@ -5,7 +5,6 @@ export const Navbar = () => {
             <div><a href='/home'>Home</a></div>
             <div><a href='/messages'>Messages</a></div>
             <div><a href='/news'>News</a></div>
-            <div><a href='/feed'>Feed</a></div>
         </div>
     );
 }

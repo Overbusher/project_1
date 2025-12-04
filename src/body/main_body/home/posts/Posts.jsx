@@ -12,6 +12,7 @@ export const Posts = () => {
                 <textarea></textarea>
                 <button>Добавить</button>
             </div>
+            <div>
             <Post texta='FUS RO DAH!'
                    srcs='https://assetsio.gnwcdn.com/elder-scrolls-skyrim-artwork.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp'/>
             <Post texta='LIGHT WEIGHT, BABY!!!'
@@ -20,6 +21,7 @@ export const Posts = () => {
                    srcs='https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'/>
             <Post texta='Hi! How are you?'
                    srcs='https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'/>
+            </div>
         </div>
     )
 }
