@@ -1,10 +1,18 @@
 import st from './Maine_body.module.css'
 import Home from "./home/Home";
+import {Messages} from "./messages/Messages";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+
 
 export const Maine_body = () => {
     return (
+        <BrowserRouter>
         <div className={st.main_body}>
-            <Home/>
+            <Routes>
+                <Route path='/messages' element={<Messages/>}/>
+                <Route path='/home' element={<Home/>}/>
+            </Routes>
         </div>
+        </BrowserRouter>
     )
 }

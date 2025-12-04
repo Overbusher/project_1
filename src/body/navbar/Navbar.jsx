@@ -2,10 +2,10 @@ import st from './Navbar.module.css'
 
 export const Navbar = () => {
     return (<div className={st.navbar}>
-            <div><a href='#S'>Home</a></div>
-            <div><a href='#S'>Messages</a></div>
-            <div><a href='#S'>News</a></div>
-            <div><a href='#S'>Feed</a></div>
+            <div><a href='/home'>Home</a></div>
+            <div><a href='/messages'>Messages</a></div>
+            <div><a href='/news'>News</a></div>
+            <div><a href='/feed'>Feed</a></div>
         </div>
     );
 }
