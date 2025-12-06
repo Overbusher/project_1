@@ -1,17 +1,33 @@
 import st from './Messages.module.css'
 import {Dialogs} from "./dialogs/Dialogs";
 
-export const Messages = (props) => {
+export const Messages = () => {
+
+    let dialogsData =[
+        {id: 1 , name: 'Diana'},
+        {id: 2 , name: 'Vitaliy'},
+        {id: 3 , name: 'Olga'},
+        {id: 4 , name: 'Vera'},
+        {id: 5 , name: 'Timofei'},
+        {id: 6 , name: 'Vanya'}
+    ]
+
+   //  let messageData = [
+   //     {id: 1 , message: 'Hi!!'},
+   //     {id: 2 , message: 'How are you?'},
+   //     {id: 3 , message: 'You are here!?'}
+   // ]
+
+
     return (
         <div className={st.msg}>
             <div>
-            <Dialogs name="Diana" id="1"/>
-            <Dialogs name="Timofey" id="2"/>
-            <Dialogs name="Vanya" id="3"/>
-            <Dialogs name="Igor" id="4"/>
-            <Dialogs name="Olga" id="5"/>
-            <Dialogs name="Vitaliy" id="6"/>
-            <Dialogs name="Vera" id="7"/>
+            <Dialogs name={dialogsData[0].name} id={dialogsData[0].id}/>
+            <Dialogs name={dialogsData[1].name} id={dialogsData[1].id}/>
+            <Dialogs name={dialogsData[2].name} id={dialogsData[2].id}/>
+            <Dialogs name={dialogsData[3].name} id={dialogsData[3].id}/>
+            <Dialogs name={dialogsData[4].name} id={dialogsData[4].id}/>
+            <Dialogs name={dialogsData[5].name} id={dialogsData[5].id}/>
             </div>
         <div className={st.messages}>
             <div className={st.messages}>Hi!!</div>
