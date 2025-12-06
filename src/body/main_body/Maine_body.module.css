@@ -1,4 +1,5 @@
 .main_body {
   grid-area: c;
   background-color: bisque;
+  border: solid 1px black;
 }

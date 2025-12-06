@@ -2,14 +2,10 @@
   grid-area: n;
   background-color: yellow;
   padding: 5px;
+  border: solid 1px black;
 }
 .rs {
-  text-align: center;
-  width: 100px;
-  height: 10px;
-  display: inline-block; /* Чтобы padding и margin работали правильно */
-  padding: 20px 20px;  /* Отступы внутри рамки */
-  border: 2px solid red; /* Квадратная обводка: 2px толщина, сплошная, серая */
+  padding: 10px;
 }
 .item {
   color: red;
@@ -17,4 +13,5 @@
 
 .active {
   color: aqua;
+  padding: 15px;
 }

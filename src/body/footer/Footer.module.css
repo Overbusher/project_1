@@ -1,4 +1,7 @@
 .footer {
   grid-area: f;
   background-color: red;
+  border: solid 1px black;
+  text-align: center;
+  padding: 10px;
 }

@@ -10,7 +10,7 @@ export const Maine_body = () => {
     return (
         <div className={st.main_body}>
                 <Routes>
-                    <Route path='/messages' element={<Messages/>}/>
+                    <Route path='/messages/*' element={<Messages/>}/>
                     <Route path='/home' element={<Home/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
