@@ -1,3 +1,18 @@
 .msg {
+ display: flex;
+  grid-template-columns: 1fr 10fr;
+  grid-gap: 20px;
+ }
 
+.dialogs {
+  padding: 10px;
 }
+
+.dialogs .active {
+ color: cyan;
+}
+
+.messages {
+  padding: 10px;
+}
+
