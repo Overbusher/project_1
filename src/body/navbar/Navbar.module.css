@@ -1,4 +1,20 @@
 .navbar {
   grid-area: n;
   background-color: yellow;
+  padding: 5px;
+}
+.rs {
+  text-align: center;
+  width: 100px;
+  height: 10px;
+  display: inline-block; /* Чтобы padding и margin работали правильно */
+  padding: 20px 20px;  /* Отступы внутри рамки */
+  border: 2px solid red; /* Квадратная обводка: 2px толщина, сплошная, серая */
+}
+.item {
+  color: red;
+}
+
+.active {
+  color: aqua;
 }
