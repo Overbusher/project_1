@@ -3,11 +3,11 @@ import {Posts} from './posts/Posts'
 import {Avatar} from "./avatar/Avatar";
 import {FL_name} from "./fl_name/FL_name";
 
-const Home = () => {
+const Home = (props) => {
     return (<div className='home'>
             <Avatar/>
             <FL_name/>
-            <Posts />
+            <Posts posts={props.posts}/>
         </div>
     )
 }
