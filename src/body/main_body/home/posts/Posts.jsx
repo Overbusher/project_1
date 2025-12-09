@@ -3,8 +3,7 @@ import {Post} from "./post/Post";
 
 
 export const Posts = (props) => {
-
-    let postsElements = props.posts.map(post =>
+    let postsElements = props.postData.map(post =>
         <Post texta={post.text}
               srcs={post.src}/>)
     return (

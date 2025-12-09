@@ -7,7 +7,7 @@ const Home = (props) => {
     return (<div className='home'>
             <Avatar/>
             <FL_name/>
-            <Posts posts={props.posts}/>
+            <Posts postData={props.postData}/>
         </div>
     )
 }

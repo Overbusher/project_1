@@ -3,12 +3,12 @@ import {Dialog} from "./dialog/Dialog";
 
 export const Dialogs = (props) => {
     const {
-        persona = [],
+        dialogData = [],
     } = props;
 
     return (
         <div>
-            {persona.map((data) => (<Dialog key={data.key} {...data}/>))}
+            {dialogData.map((data) => (<Dialog key={data.key} {...data}/>))}
         </div>
     )
 }

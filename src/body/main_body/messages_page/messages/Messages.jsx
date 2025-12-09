@@ -5,12 +5,12 @@ import {Message} from "./message/Message";
 export const Messages = (props) => {
     // console.log(props);
     const {
-        msg = [],
+        messageData = [],
     } = props;
 
     return (
         <div className={st.messages}>
-            {msg.map((data) => (<Message key={data.key} {...data}/>))}
+            {messageData.map((data) => (<Message key={data.key} {...data}/>))}
         </div>
     )
 }
