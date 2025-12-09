@@ -7,10 +7,10 @@ export const Messages_page = (props) => {
     return (
         <div className={st.msg}>
             <div>
-                <Dialogs dialogData={props.state.dialogData}/>
+                <Dialogs dialogData={props.state.messagesPage.dialogData}/>
             </div>
             <div className={st.messages_page}>
-                <Messages messageData={props.state.messageData}/>
+                <Messages messageData={props.state.messagesPage.messageData}/>
             </div>
         </div>
     )
