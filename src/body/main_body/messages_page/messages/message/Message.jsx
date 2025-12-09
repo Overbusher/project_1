@@ -1,13 +1,11 @@
-import {useLocation} from "react-router-dom";
 
 export const Message = (props) => {
-    const location = useLocation();
-    // console.log(props);
-    const ident ="/message/" + ' ' + props.id;
-    console.log(ident);
+    // const location = useLocation();
+    // const ident ="/message/" + ' ' + props.id;
+    // console.log(ident);
     return (
         <div>
-            Hi!
+            {props.message}
         </div>
     )
 }
