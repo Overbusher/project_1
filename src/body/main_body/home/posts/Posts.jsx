@@ -4,7 +4,7 @@ import {Post} from "./post/Post";
 
 export const Posts = (props) => {
     let postsElements = props.postData.map(post =>
-        <Post texta={post.text}
+        <Post key={post.id} texta={post.text}
               srcs={post.src}/>)
     return (
         <div className={st.posts}>

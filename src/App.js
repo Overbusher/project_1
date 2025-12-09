@@ -9,7 +9,7 @@ const App = (props) => {
         <div className='app_wrapper'>
             <Header/>
             <Navbar/>
-            <Maine_body  {...props}/>
+            <Maine_body  state={props.state}/>
             <Footer/>
         </div>
     );

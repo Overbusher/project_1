@@ -3,14 +3,14 @@ import {Message} from "./message/Message";
 
 
 export const Messages = (props) => {
-    // console.log(props);
-    const {
-        messageData = [],
-    } = props;
+
+    let messageData = props.messageData.map(msg =>
+        <Message key={msg.id} id={msg.id}
+                message={msg.message}/>)
 
     return (
         <div className={st.messages}>
-            {messageData.map((data) => (<Message key={data.key} {...data}/>))}
+            {messageData}
         </div>
     )
 }

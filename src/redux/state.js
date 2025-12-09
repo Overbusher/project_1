@@ -2,21 +2,21 @@ export let state = {
 
     homePage: {
         postData :[
-            {text: 'FUS RO DAH!', src:'https://assetsio.gnwcdn.com/elder-scrolls-skyrim-artwork.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp'},
-            {text: 'LIGHT WEIGHT, BABY!!!', src:'https://i1.sndcdn.com/artworks-zQNVURezx4vONC0z-XErjxw-t500x500.jpg'},
-            {text: 'You COOL, BROO!!', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
-            {text: 'Hi! How are you?', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
+            {id:1, text: 'FUS RO DAH!', src:'https://assetsio.gnwcdn.com/elder-scrolls-skyrim-artwork.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp'},
+            {id:2, text: 'LIGHT WEIGHT, BABY!!!', src:'https://i1.sndcdn.com/artworks-zQNVURezx4vONC0z-XErjxw-t500x500.jpg'},
+            {id:3, text: 'You COOL, BROO!!', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
+            {id:4, text: 'Hi! How are you?', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
         ]
     },
 
     messagesPage: {
         dialogData :[
             {key:1, id: 1 , name: 'Diana'},
-            {key:1, id: 2 , name: 'Vitaliy'},
-            {key:1, id: 3 , name: 'Olga'},
-            {key:1, id: 4 , name: 'Vera'},
-            {key:1, id: 5 , name: 'Timofei'},
-            {key:1, id: 6 , name: 'Vanya'}
+            {key:2, id: 2 , name: 'Vitaliy'},
+            {key:3, id: 3 , name: 'Olga'},
+            {key:4, id: 4 , name: 'Vera'},
+            {key:5, id: 5 , name: 'Timofei'},
+            {key:6, id: 6 , name: 'Vanya'}
         ],
         messageData :[
             {key:1, id: 1, message: 'Привет'},
