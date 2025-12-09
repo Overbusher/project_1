@@ -4,12 +4,12 @@ import {Footer} from "./body/footer/Footer";
 import {Navbar} from "./body/navbar/Navbar";
 import {Maine_body} from "./body/main_body/Maine_body";
 
-const App = () => {
+const App = (props) => {
     return (
         <div className='app_wrapper'>
             <Header/>
             <Navbar/>
-            <Maine_body/>
+            <Maine_body  {...props}/>
             <Footer/>
         </div>
     );
