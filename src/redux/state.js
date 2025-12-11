@@ -2,10 +2,14 @@ export let state = {
 
     homePage: {
         postData :[
-            {id:1, text: 'FUS RO DAH!', src:'https://assetsio.gnwcdn.com/elder-scrolls-skyrim-artwork.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp'},
-            {id:2, text: 'LIGHT WEIGHT, BABY!!!', src:'https://i1.sndcdn.com/artworks-zQNVURezx4vONC0z-XErjxw-t500x500.jpg'},
-            {id:3, text: 'You COOL, BROO!!', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
-            {id:4, text: 'Hi! How are you?', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
+            {id:1, text: 'FUS RO DAH!', src:'https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0'},
+            // {id:1, text: 'FUS RO DAH!', src:'https://assetsio.gnwcdn.com/elder-scrolls-skyrim-artwork.jpg?width=1200&height=1200&fit=crop&quality=100&format=png&enable=upscale&auto=webp'},
+            // {id:2, text: 'LIGHT WEIGHT, BABY!!!', src:'https://i1.sndcdn.com/artworks-zQNVURezx4vONC0z-XErjxw-t500x500.jpg'},
+            {id:2, text: 'LIGHT WEIGHT, BABY!!!', src:'https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0'},
+            // {id:3, text: 'You COOL, BROO!!', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
+            {id:3, text: 'You COOL, BROO!!', src:'https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0'},
+            // {id:4, text: 'Hi! How are you?', src:'https://png.klev.club/uploads/posts/2024-04/png-klev-club-vrj4-p-avatarka-png-28.png'},
+            {id:4, text: 'Hi! How are you?', src:'https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0'},
         ]
     },
 
@@ -38,4 +42,14 @@ export let state = {
             {key:17, id:6, message: 'Чувствую себя не оч'}
         ]
     }
+
+
+}
+
+export let addPost = (postMessage) => {
+    let newPost = {
+        id:5,
+        text : postMessage,
+        src: "https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0"};
+    state.homePage.postData.push(newPost);
 }
