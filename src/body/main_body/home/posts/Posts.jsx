@@ -15,7 +15,7 @@ export const Posts = (props) => {
                 <textarea></textarea>
             </div>
             <div className={st.posts}>
-                <button>Добавить</button>
+                <button onClick={ () => { alert("Hey!") }}>Добавить</button>
             </div>
             <div className={st.posts}>
                 {postsElements}
