@@ -1,10 +1,9 @@
 .msg {
- display: flex;
-  grid-template-columns: 3fr 7fr;
+ display: grid;
+  grid-template-areas:
+  "dial mess"
+  "dial btn";
+  grid-template-columns: 1fr 14fr;
   grid-gap: 20px;
  }
-
-.messages_page {
-  padding: 5px;
-}
 

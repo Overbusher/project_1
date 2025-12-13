@@ -1,5 +1,5 @@
 import {Dialog} from "./dialog/Dialog";
-
+import st from "./Dialogs.module.css"
 
 export const Dialogs = (props) => {
     let dialogData = props.dialogData.map(post =>
@@ -7,7 +7,7 @@ export const Dialogs = (props) => {
               name={post.name}/>)
 
     return (
-        <div>
+        <div className={st.dialogs}>
             {dialogData}
         </div>
     )
