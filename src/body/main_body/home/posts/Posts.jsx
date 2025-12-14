@@ -23,7 +23,7 @@ export const Posts = (props) => {
                 <textarea ref={newPostElement}></textarea>
             </div>
             <div className={st.posts}>
-                <button onClick={() =>  addPost() }>Добавить
+                <button onClick={() => addPost()}>Добавить
                 </button>
             </div>
             <div className={st.posts}>
