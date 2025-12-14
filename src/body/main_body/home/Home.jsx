@@ -1,12 +1,12 @@
 import './Home.css'
 import {Posts} from './posts/Posts'
 import {Avatar} from "./avatar/Avatar";
-import {FL_name} from "./fl_name/FL_name";
+import {FLname} from "./fl_name/FLname";
 
 const Home = (props) => {
     return (<div className='home'>
             <Avatar/>
-            <FL_name/>
+            <FLname/>
             <Posts postData={props.homePage.postData}
                    addPost={props.addPost}
                    inputPost={props.inputPost}

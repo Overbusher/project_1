@@ -1,6 +1,8 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+    console.log("State have been changed!");
+}
 
-export let state = {
+let state = {
 
     homePage: {
         postData: [
@@ -65,7 +67,9 @@ export let state = {
 
 }
 
-export let addPost = () => {
+window.state = state;
+
+export const addPost = () => {
     let newPost = {
         id: 5,
         text: state.homePage.inputPostText,
@@ -76,7 +80,7 @@ export let addPost = () => {
     rerenderEntireTree(state);
 }
 
-export let addMessage = (message_input) => {
+export const addMessage = (message_input) => {
     let newMessage = {
         key: 19,
         id: 6,
@@ -86,7 +90,13 @@ export let addMessage = (message_input) => {
     rerenderEntireTree(state);
 }
 
-export let inputPost = (inputText) => {
+export const inputPost = (inputText) => {
     state.homePage.inputPostText = inputText;
     rerenderEntireTree(state);
 }
+
+export const subscribe = (observer) => {
+ rerenderEntireTree = observer;
+}
+
+export default state;

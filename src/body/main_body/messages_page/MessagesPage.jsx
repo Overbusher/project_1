@@ -1,9 +1,9 @@
-import st from './Messages_page.module.css'
+import st from './MessagesPage.module.css'
 import {Dialogs} from "./dialogs/Dialogs";
 import {Messages} from "./messages/Messages";
 import {InputArea} from "./input_area/Input_area";
 
-export const Messages_page = (props) => {
+export const MessagesPage = (props) => {
 
     return (
         <div className={st.msg}>

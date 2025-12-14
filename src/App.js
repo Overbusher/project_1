@@ -2,18 +2,18 @@ import './App.css';
 import {Header} from "./body/header/Header";
 import {Footer} from "./body/footer/Footer";
 import {Navbar} from "./body/navbar/Navbar";
-import {Maine_body} from "./body/main_body/Maine_body";
+import {MaineBody} from "./body/main_body/MaineBody";
 
 const App = (props) => {
     return (
         <div className='app_wrapper'>
             <Header/>
             <Navbar/>
-            <Maine_body  state={props.state}
-                         addPost={props.addPost}
-                         addMessage={props.addMessage}
-                         inputPost={props.inputPost}
-                         inputPostText={props.inputPostText} />
+            <MaineBody state={props.state}
+                       addPost={props.addPost}
+                       addMessage={props.addMessage}
+                       inputPost={props.inputPost}
+                       inputPostText={props.inputPostText} />
             <Footer/>
         </div>
     );
