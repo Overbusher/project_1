@@ -9,7 +9,11 @@ const App = (props) => {
         <div className='app_wrapper'>
             <Header/>
             <Navbar/>
-            <Maine_body  state={props.state} addPost={props.addPost} addMessage={props.addMessage}/>
+            <Maine_body  state={props.state}
+                         addPost={props.addPost}
+                         addMessage={props.addMessage}
+                         inputPost={props.inputPost}
+                         inputPostText={props.inputPostText} />
             <Footer/>
         </div>
     );

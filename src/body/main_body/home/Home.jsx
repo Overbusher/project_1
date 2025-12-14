@@ -7,7 +7,10 @@ const Home = (props) => {
     return (<div className='home'>
             <Avatar/>
             <FL_name/>
-            <Posts postData={props.homePage.postData} addPost={props.addPost}/>
+            <Posts postData={props.homePage.postData}
+                   addPost={props.addPost}
+                   inputPost={props.inputPost}
+                   inputPostText={props.homePage.inputPostText}/>
         </div>
     )
 }

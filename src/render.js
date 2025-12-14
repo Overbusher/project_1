@@ -2,14 +2,17 @@ import ReactDOM from "react-dom/client";
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
+import {addMessage, addPost, inputPost} from "./redux/state";
 
-export let rerenderEntireTree = (state, addPost, addMessage) => {
-    const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('root'))
+
+export let rerenderEntireTree = (state) => {
+
 
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={addPost} addMessage={addMessage}/>
+                <App state={state} addPost={addPost} addMessage={addMessage} inputPost={inputPost}/>
             </BrowserRouter>
         </React.StrictMode>
     );
