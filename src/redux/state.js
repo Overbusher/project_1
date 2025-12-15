@@ -1,3 +1,5 @@
+let store = () => {
+
 let rerenderEntireTree = () => {
     console.log("State have been changed!");
 }
@@ -69,7 +71,7 @@ let state = {
 
 window.state = state;
 
-export const addPost = () => {
+const addPost = () => {
     let newPost = {
         id: 5,
         text: state.homePage.inputPostText,
@@ -80,7 +82,7 @@ export const addPost = () => {
     rerenderEntireTree(state);
 }
 
-export const addMessage = (message_input) => {
+const addMessage = (message_input) => {
     let newMessage = {
         key: 19,
         id: 6,
@@ -90,13 +92,15 @@ export const addMessage = (message_input) => {
     rerenderEntireTree(state);
 }
 
-export const inputPost = (inputText) => {
+const inputPost = (inputText) => {
     state.homePage.inputPostText = inputText;
     rerenderEntireTree(state);
 }
 
-export const subscribe = (observer) => {
+const subscribe = (observer) => {
  rerenderEntireTree = observer;
 }
 
-export default state;
+}
+
+export default store;

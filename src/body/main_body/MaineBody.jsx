@@ -10,11 +10,11 @@ export const MaineBody = (props) => {
     return (
         <div className={st.main_body}>
                 <Routes>
-                    <Route path='/messages/*' element={<MessagesPage messagesPage={props.state.messagesPage}
-                                                                     addMessage={props.addMessage}/>}/>
-                    <Route path='/home' element={<Home homePage={props.state.homePage}
-                                                       addPost={props.addPost}
-                                                       inputPost={props.inputPost}/>}/>
+                    <Route path='/messages/*' element={<MessagesPage messagesPage={props.store.state.messagesPage}
+                                                                     addMessage={props.store.addMessage}/>}/>
+                    <Route path='/home' element={<Home homePage={props.store.state.homePage}
+                                                       addPost={props.store.addPost}
+                                                       inputPost={props.store.inputPost}/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                 </Routes>
