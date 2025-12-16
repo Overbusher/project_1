@@ -14,14 +14,19 @@ let rerenderEntireTree = () => {
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App store={store}/>
+                <App state={store.getState()}
+                     inputPost={store.inputPost.bind(store)}
+                     addPost={store.addPost.bind(store)}
+                     inputMessage={store.inputMessage.bind(store)}
+                     addMessage={store.addMessage.bind(store)}
+                />
             </BrowserRouter>
         </React.StrictMode>
     );
 
 }
 
-rerenderEntireTree(store.state);
+rerenderEntireTree(store.getState());
 store.subscribe(rerenderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
