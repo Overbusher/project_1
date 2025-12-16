@@ -69,43 +69,72 @@ let store = {
     rerenderEntireTree() {
         console.log("State have been changed!");
     },
-
-
-    addPost() {
-        let newPost = {
-            id: 5,
-            text: this._state.homePage.inputPostText,
-            src: "https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0"
-        };
-        this._state.homePage.postData.push(newPost);
-        this._state.homePage.inputPostText = '';
-        this.rerenderEntireTree(this._state);
-    },
-    inputPost(inputText) {
-        this._state.homePage.inputPostText = inputText;
-        this.rerenderEntireTree(this._state);
-    },
-    addMessage() {
-        let newMessage = {
-            key: 19,
-            id: 6,
-            message: this._state.messagesPage.inputMessageText
-        };
-        this._state.messagesPage.messageData.push(newMessage);
-        this._state.messagesPage.inputMessageText = '';
-        this.rerenderEntireTree(this._state);
-    },
-    inputMessage(inputText) {
-        this._state.messagesPage.inputMessageText = inputText;
-        this.rerenderEntireTree(this._state);
-        console.log(this._state.messagesPage.inputMessageText);
-    },
-
-
-
     subscribe(observer) {
-        this.rerenderEntireTree = observer;}
+        this.rerenderEntireTree = observer;
+    },
+
+    dispatch(action) {
+        if (action === "ADD_POST") {
+            let newPost = {
+                id: 5,
+                text: this._state.homePage.inputPostText,
+                src: "https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0"
+            };
+            this._state.homePage.postData.push(newPost);
+            this._state.homePage.inputPostText = '';
+            this.rerenderEntireTree(this._state);
+
+        } else if (action === "INPUT_POST") {
+            this._state.homePage.inputPostText = action.inputText;
+            this.rerenderEntireTree(this._state);
+
+        } else if (action === "ADD_MESSAGE") {
+            let newMessage = {
+                key: 19,
+                id: 6,
+                message: this._state.messagesPage.inputMessageText
+            };
+            this._state.messagesPage.messageData.push(newMessage);
+            this._state.messagesPage.inputMessageText = '';
+            this.rerenderEntireTree(this._state);
+
+        } else if (action === "INPUT_MESSAGE") {
+            this._state.messagesPage.inputMessageText = action.inputText;
+            this.rerenderEntireTree(this._state);
+            console.log(this._state.messagesPage.inputMessageText);
+        }
+    }
 }
+// addPost() {
+//     let newPost = {
+//         id: 5,
+//         text: this._state.homePage.inputPostText,
+//         src: "https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0"
+//     };
+//     this._state.homePage.postData.push(newPost);
+//     this._state.homePage.inputPostText = '';
+//     this.rerenderEntireTree(this._state);
+// },
+// inputPost(inputText) {
+//     this._state.homePage.inputPostText = inputText;
+//     this.rerenderEntireTree(this._state);
+// },
+// addMessage() {
+//     let newMessage = {
+//         key: 19,
+//         id: 6,
+//         message: this._state.messagesPage.inputMessageText
+//     };
+//     this._state.messagesPage.messageData.push(newMessage);
+//     this._state.messagesPage.inputMessageText = '';
+//     this.rerenderEntireTree(this._state);
+// },
+// inputMessage(inputText) {
+//     this._state.messagesPage.inputMessageText = inputText;
+//     this.rerenderEntireTree(this._state);
+//     console.log(this._state.messagesPage.inputMessageText);
+// },
+
 
 export default store;
 window.store = store;
