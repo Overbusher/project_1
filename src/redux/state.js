@@ -74,7 +74,7 @@ let store = {
     },
 
     dispatch(action) {
-        if (action === "ADD_POST") {
+        if (action.type === 'ADD_POST') {
             let newPost = {
                 id: 5,
                 text: this._state.homePage.inputPostText,
@@ -84,11 +84,11 @@ let store = {
             this._state.homePage.inputPostText = '';
             this.rerenderEntireTree(this._state);
 
-        } else if (action === "INPUT_POST") {
+        } else if (action.type === 'INPUT_POST') {
             this._state.homePage.inputPostText = action.inputText;
             this.rerenderEntireTree(this._state);
 
-        } else if (action === "ADD_MESSAGE") {
+        } else if (action.type === 'ADD_MESSAGE') {
             let newMessage = {
                 key: 19,
                 id: 6,
@@ -98,7 +98,7 @@ let store = {
             this._state.messagesPage.inputMessageText = '';
             this.rerenderEntireTree(this._state);
 
-        } else if (action === "INPUT_MESSAGE") {
+        } else if (action.type === 'INPUT_MESSAGE') {
             this._state.messagesPage.inputMessageText = action.inputText;
             this.rerenderEntireTree(this._state);
             console.log(this._state.messagesPage.inputMessageText);
@@ -134,7 +134,6 @@ let store = {
 //     this.rerenderEntireTree(this._state);
 //     console.log(this._state.messagesPage.inputMessageText);
 // },
-
 
 export default store;
 window.store = store;

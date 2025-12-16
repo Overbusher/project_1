@@ -8,9 +8,8 @@ const Home = (props) => {
             <Avatar/>
             <FLname/>
             <Posts postData={props.homePage.postData}
-                   addPost={props.addPost}
-                   inputPost={props.inputPost}
-                   inputPostText={props.homePage.inputPostText}/>
+                   inputPostText={props.homePage.inputPostText}
+                   dispatch={props.dispatch}/>
         </div>
     )
 }

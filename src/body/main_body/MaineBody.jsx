@@ -11,11 +11,9 @@ export const MaineBody = (props) => {
         <div className={st.main_body}>
                 <Routes>
                     <Route path='/messages/*' element={<MessagesPage messagesPage={props.state.messagesPage}
-                                                                     inputMessage={props.inputMessage}
-                                                                     addMessage={props.addMessage}/>}/>
+                                                                     dispatch={props.dispatch}/>}/>
                     <Route path='/home' element={<Home homePage={props.state.homePage}
-                                                       inputPost={props.inputPost}
-                                                       addPost={props.addPost}/>}/>
+                                                       dispatch={props.dispatch}/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                 </Routes>

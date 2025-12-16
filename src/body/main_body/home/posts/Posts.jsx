@@ -10,11 +10,13 @@ export const Posts = (props) => {
 
     let newPostElement = React.createRef();
 
-    let addPost = props.addPost;
+    let addPost = () => {
+        props.dispatch( {type: "ADD_POST" })
+    }
 
     let isChange = () => {
-        let text = newPostElement.current.value;
-        props.inputPost(text);
+        let inputText = newPostElement.current.value;
+        props.dispatch({ type: "INPUT_POST", inputText });
     }
 
     return (
@@ -26,7 +28,7 @@ export const Posts = (props) => {
                 <textarea onChange={isChange} value={props.inputPostText} ref={newPostElement}/>
             </div>
             <div className={st.posts}>
-                <button onClick={() => addPost()}>Добавить
+                <button onClick={addPost}>Добавить
                 </button>
             </div>
             <div className={st.posts}>

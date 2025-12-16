@@ -11,10 +11,7 @@ const App = (props) => {
             <Navbar/>
             <MaineBody
                        state={props.state}
-                       inputPost={props.inputPost}
-                       addPost={props.addPost}
-                       inputMessage={props.inputMessage}
-                       addMessage={props.addMessage}
+                       dispatch={props.dispatch}
             />
             <Footer/>
         </div>
