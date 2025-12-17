@@ -1,3 +1,8 @@
+let ADD_POST = 'ADD_POST';
+let INPUT_POST = 'INPUT_POST';
+let ADD_MESSAGE = 'ADD_MESSAGE';
+const INPUT_MESSAGE = 'INPUT_MESSAGE';
+
 let store = {
     _state: {
         homePage: {
@@ -104,7 +109,16 @@ let store = {
             console.log(this._state.messagesPage.inputMessageText);
         }
     }
+
 }
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+export const inputPostActionCreator = (inputText) => ({type: INPUT_POST, inputText})
+
+export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+
+export const inputMessageActionCreator = (inputText) => ({type: INPUT_MESSAGE, inputText})
+
 // addPost() {
 //     let newPost = {
 //         id: 5,

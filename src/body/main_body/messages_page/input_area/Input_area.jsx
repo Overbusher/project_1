@@ -1,15 +1,18 @@
 import st from "./Input_area.module.css"
 import React from 'react';
+import {addMessageActionCreator, inputMessageActionCreator} from "../../../../redux/state";
 
 export const InputArea = (props) => {
 
     let newMessageElement = React.createRef();
 
-    let addMessage= () => props.dispatch({ type: "ADD_MESSAGE" });
+    let addMessage= () => {
+        props.dispatch(addMessageActionCreator());
+    }
 
     let isChange = () => {
         let inputText = newMessageElement.current.value;
-        props.dispatch({ type: "INPUT_MESSAGE", inputText});
+        props.dispatch(inputMessageActionCreator(inputText));
     }
 
 
