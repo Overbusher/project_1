@@ -8,7 +8,7 @@ export const MessagesPage = (props) => {
         <div className={st.msg}>
             <Dialogs dialogData={props.messagesPage.dialogData}/>
             <Messages messageData={props.messagesPage.messageData}/>
-            <InputArea inputMessageText={props.messagesPage.inputMessageText}
+            <InputArea inputMessageData={props.messagesPage.inputMessageData}
                        dispatch={props.dispatch}/>
         </div>
     )

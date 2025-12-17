@@ -32,7 +32,7 @@ let store = {
                     src: 'https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0'
                 },
             ],
-            inputPostText: ''
+            inputPostData: ''
         },
 
         messagesPage: {
@@ -63,7 +63,7 @@ let store = {
                 {key: 16, id: 6, message: 'Привет, я сегодня не буду'},
                 {key: 17, id: 6, message: 'Чувствую себя не оч'}
             ],
-            inputMessageText: ''
+            inputMessageData: ''
         }
 
 
@@ -82,31 +82,31 @@ let store = {
         if (action.type === 'ADD_POST') {
             let newPost = {
                 id: 5,
-                text: this._state.homePage.inputPostText,
+                text: this._state.homePage.inputPostData,
                 src: "https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0"
             };
             this._state.homePage.postData.push(newPost);
-            this._state.homePage.inputPostText = '';
+            this._state.homePage.inputPostData = '';
             this.rerenderEntireTree(this._state);
 
         } else if (action.type === 'INPUT_POST') {
-            this._state.homePage.inputPostText = action.inputText;
+            this._state.homePage.inputPostData = action.inputText;
             this.rerenderEntireTree(this._state);
 
         } else if (action.type === 'ADD_MESSAGE') {
             let newMessage = {
                 key: 19,
                 id: 6,
-                message: this._state.messagesPage.inputMessageText
+                message: this._state.messagesPage.inputMessageData
             };
             this._state.messagesPage.messageData.push(newMessage);
-            this._state.messagesPage.inputMessageText = '';
+            this._state.messagesPage.inputMessageData = '';
             this.rerenderEntireTree(this._state);
 
         } else if (action.type === 'INPUT_MESSAGE') {
-            this._state.messagesPage.inputMessageText = action.inputText;
+            this._state.messagesPage.inputMessageData = action.inputText;
             this.rerenderEntireTree(this._state);
-            console.log(this._state.messagesPage.inputMessageText);
+            console.log(this._state.messagesPage.inputMessageData);
         }
     }
 

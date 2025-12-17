@@ -18,7 +18,7 @@ export const InputArea = (props) => {
 
     return (
         <div className={st.input_area}>
-            <textarea onChange={isChange} value={props.inputMessageText} ref={newMessageElement}></textarea>
+            <textarea onChange={isChange} value={props.inputMessageData} ref={newMessageElement} placeholder="Enter you'r message"></textarea>
             <button onClick={addMessage}>Отправить</button>
         </div>
     )
