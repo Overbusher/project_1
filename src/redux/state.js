@@ -1,3 +1,6 @@
+import profileReducer from "./profileReducer";
+import messagesReducer from "./messagesReducer";
+
 let ADD_POST = 'ADD_POST';
 let INPUT_POST = 'INPUT_POST';
 let ADD_MESSAGE = 'ADD_MESSAGE';
@@ -71,43 +74,19 @@ let store = {
     getState() {
         return this._state;
     },
-    rerenderEntireTree() {
+    rerenderCall() {
         console.log("State have been changed!");
     },
     subscribe(observer) {
-        this.rerenderEntireTree = observer;
+        this.rerenderCall = observer;
     },
 
     dispatch(action) {
-        if (action.type === 'ADD_POST') {
-            let newPost = {
-                id: 5,
-                text: this._state.profilePage.inputPostData,
-                src: "https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0"
-            };
-            this._state.profilePage.postData.push(newPost);
-            this._state.profilePage.inputPostData = '';
-            this.rerenderEntireTree(this._state);
 
-        } else if (action.type === 'INPUT_POST') {
-            this._state.profilePage.inputPostData = action.inputText;
-            this.rerenderEntireTree(this._state);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
 
-        } else if (action.type === 'ADD_MESSAGE') {
-            let newMessage = {
-                key: 19,
-                id: 6,
-                message: this._state.messagesPage.inputMessageData
-            };
-            this._state.messagesPage.messageData.push(newMessage);
-            this._state.messagesPage.inputMessageData = '';
-            this.rerenderEntireTree(this._state);
-
-        } else if (action.type === 'INPUT_MESSAGE') {
-            this._state.messagesPage.inputMessageData = action.inputText;
-            this.rerenderEntireTree(this._state);
-            console.log(this._state.messagesPage.inputMessageData);
-        }
+        this.rerenderCall(this._state);
     }
 
 }
