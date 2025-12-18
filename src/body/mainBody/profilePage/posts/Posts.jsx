@@ -26,7 +26,7 @@ export const Posts = (props) => {
                 Посты:
             </div>
             <div className={st.posts}>
-                <textarea onChange={isChange} value={props.inputPostData} ref={newPostElement}/>
+                <textarea onChange={isChange} value={props.inputPostData} placeholder= "Enter you'r post text" ref={newPostElement}/>
             </div>
             <div className={st.posts}>
                 <button onClick={addPost}>Добавить
