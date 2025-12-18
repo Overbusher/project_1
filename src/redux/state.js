@@ -5,7 +5,7 @@ const INPUT_MESSAGE = 'INPUT_MESSAGE';
 
 let store = {
     _state: {
-        homePage: {
+        profilePage: {
             postData: [
                 {
                     id: 1,
@@ -82,15 +82,15 @@ let store = {
         if (action.type === 'ADD_POST') {
             let newPost = {
                 id: 5,
-                text: this._state.homePage.inputPostData,
+                text: this._state.profilePage.inputPostData,
                 src: "https://sun9-55.userapi.com/s/v1/ig2/ZyBsxGr_o07pRdrAAniwTaTTNbXy4UIHSQffk5IdOGzeZV_Dr1byiJ3_m2zzdHKjnqNmRu53iphy4avSqZJiWJrM.jpg?quality=96&as=32x32,48x48,72x72,108x108,160x161,228x229&from=bu&cs=228x0"
             };
-            this._state.homePage.postData.push(newPost);
-            this._state.homePage.inputPostData = '';
+            this._state.profilePage.postData.push(newPost);
+            this._state.profilePage.inputPostData = '';
             this.rerenderEntireTree(this._state);
 
         } else if (action.type === 'INPUT_POST') {
-            this._state.homePage.inputPostData = action.inputText;
+            this._state.profilePage.inputPostData = action.inputText;
             this.rerenderEntireTree(this._state);
 
         } else if (action.type === 'ADD_MESSAGE') {

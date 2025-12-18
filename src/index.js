@@ -10,7 +10,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 
 let rerenderEntireTree = () => {
 
-
     root.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -22,7 +21,6 @@ let rerenderEntireTree = () => {
     );
 
 }
-
 rerenderEntireTree(store.getState());
 store.subscribe(rerenderEntireTree);
 

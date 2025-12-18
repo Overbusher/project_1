@@ -2,14 +2,14 @@ import './App.css';
 import {Header} from "./body/header/Header";
 import {Footer} from "./body/footer/Footer";
 import {Navbar} from "./body/navbar/Navbar";
-import {MaineBody} from "./body/main_body/MaineBody";
+import {MainBody} from "./body/mainBody/MainBody";
 
 const App = (props) => {
     return (
         <div className='app_wrapper'>
             <Header/>
             <Navbar/>
-            <MaineBody
+            <MainBody
                        state={props.state}
                        dispatch={props.dispatch}
             />

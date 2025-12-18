@@ -1,4 +1,4 @@
-.home {
+.profilePage {
   display: grid;
   grid-template-areas:
   "ava fln"
@@ -8,6 +8,6 @@
   grid-gap: 10px;
 }
 
-.home img {
+.profilePage img {
 
 }
