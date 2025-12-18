@@ -1,6 +1,6 @@
 import st from "./Input_area.module.css"
 import React from 'react';
-import {addMessageActionCreator, inputMessageActionCreator} from "../../../../redux/state";
+import {addMessageActionCreator, inputMessageActionCreator} from "../../../../redux/messagesReducer";
 
 export const InputArea = (props) => {
 
