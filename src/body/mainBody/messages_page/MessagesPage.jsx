@@ -1,15 +1,12 @@
 import st from './MessagesPage.module.css'
 import {Dialogs} from "./dialogs/Dialogs";
-import {Messages} from "./messages/Messages";
-import {InputArea} from "./input_area/Input_area";
+import {MessagesContainer} from "./messages/MessagesContainer";
 
 export const MessagesPage = (props) => {
     return (
         <div className={st.msg}>
-            <Dialogs dialogData={props.messagesPage.dialogData}/>
-            <Messages messageData={props.messagesPage.messageData}/>
-            <InputArea inputMessageData={props.messagesPage.inputMessageData}
-                       dispatch={props.dispatch}/>
+            <Dialogs store={props.store}/>
+            <MessagesContainer store={props.store}/>
         </div>
     )
 }
