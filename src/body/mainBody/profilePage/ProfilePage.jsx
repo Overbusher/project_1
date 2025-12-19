@@ -1,15 +1,15 @@
 import './ProfilePage.css'
-import {Posts} from './posts/Posts'
 import {Avatar} from "./avatar/Avatar";
 import {FLname} from "./fl_name/FLname";
+import {PostsContainer} from "./posts/PostsContainer";
+import store from "../../../redux/reduxStore";
 
 const ProfilePage = (props) => {
     return (<div className='profilePage'>
             <Avatar/>
             <FLname/>
-            <Posts postData={props.profilePage.postData}
-                   inputPostData={props.profilePage.inputPostData}
-                   dispatch={props.dispatch}/>
+            <PostsContainer store={props.store}
+                            dispatch={store.dispatch.bind(store)}/>
         </div>
     )
 }

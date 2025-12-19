@@ -10,10 +10,8 @@ export const MainBody = (props) => {
     return (
         <div className={st.mainBody}>
                 <Routes>
-                    <Route path='/messages/*' element={<MessagesPage messagesPage={props.state.messagesPage}
-                                                                     dispatch={props.dispatch}/>}/>
-                    <Route path='/home' element={<ProfilePage profilePage={props.state.profilePage}
-                                                              dispatch={props.dispatch}/>}/>
+                    <Route path='/messages/*' element={<MessagesPage store={props.store}/>}/>
+                    <Route path='/home' element={<ProfilePage store={props.store}/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                 </Routes>

@@ -10,8 +10,7 @@ const App = (props) => {
             <Header/>
             <Navbar/>
             <MainBody
-                       state={props.state}
-                       dispatch={props.dispatch}
+                       store={props.store}
             />
             <Footer/>
         </div>
