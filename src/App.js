@@ -4,14 +4,12 @@ import {Footer} from "./body/footer/Footer";
 import {Navbar} from "./body/navbar/Navbar";
 import {MainBody} from "./body/mainBody/MainBody";
 
-const App = (props) => {
+const App = () => {
     return (
         <div className='app_wrapper'>
             <Header/>
             <Navbar/>
-            <MainBody
-                       store={props.store}
-            />
+            <MainBody/>
             <Footer/>
         </div>
     );

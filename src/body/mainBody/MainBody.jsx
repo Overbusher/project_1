@@ -6,12 +6,12 @@ import {News} from "./news/News";
 import {Settings} from "./settings/Settings";
 
 
-export const MainBody = (props) => {
+export const MainBody = () => {
     return (
         <div className={st.mainBody}>
                 <Routes>
-                    <Route path='/messages/*' element={<MessagesPage store={props.store}/>}/>
-                    <Route path='/home' element={<ProfilePage store={props.store}/>}/>
+                    <Route path='/messages/*' element={<MessagesPage/>}/>
+                    <Route path='/home' element={<ProfilePage/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                 </Routes>
