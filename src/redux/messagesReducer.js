@@ -35,20 +35,28 @@ let initialState = {
 const messagesReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: {
             let newMessage = {
                 key: 19,
                 id: 6,
                 message: state.inputMessageData
             };
-            state.messageData.push(newMessage);
-            state.inputMessageData = '';
-            return state;
+            let stateCopy = {...state};
+            stateCopy.messageData = [...state.messageData];
+            stateCopy.messageData.push(newMessage);
+            stateCopy.inputMessageData = '';
+            return stateCopy;
+        }
         case INPUT_MESSAGE:
-            state.inputMessageData = action.inputText;
-            return state;
+        {
+            let stateCopy = {...state};
+            stateCopy.inputMessageData = action.inputText;
+            return stateCopy;
+        }
         default:
+        {
             return state;
+        }
     }
 }
 
