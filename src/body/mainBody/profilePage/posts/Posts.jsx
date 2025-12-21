@@ -15,7 +15,6 @@ export const Posts = (props) => {
     }
 
     let onIsChange = () => {
-        debugger
         let inputText = newPostElement.current.value;
         props.isChange(inputText);
     }
