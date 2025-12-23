@@ -1,3 +1,12 @@
 .findUsers {
+}
 
+.findCont {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+}
+
+.findText {
+  margin: 10px;
 }

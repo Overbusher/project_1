@@ -4,7 +4,8 @@ import {FUsersContainer} from "./FUsers/FUser/FUsersContainer";
 export const FindUsers = () => {
     return (
         <div className={st.findUsers}>
-            <FUsersContainer/>
+            <h1 className={st.findText}>Users:</h1>
+            <div className={st.findCont}><FUsersContainer/></div>
         </div>
     )
 }
