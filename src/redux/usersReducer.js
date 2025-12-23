@@ -1,54 +1,94 @@
-
+let FOLLOW = 'FOLLOW';
+let UNFOLLOW = 'UNFOLLOW';
 
 let initialState = {
     usersData: [
         {
             id: 1,
-            fname: 'Diana',
-            lname: 'Raeva',
+            fName: 'Diana',
+            lName: 'Raeva',
             country: 'Belarus',
-            city: 'Grodno'
+            city: 'Grodno',
+            description: 'Красотка невиданных красот',
+            followed: true,
         },
         {
             id: 2,
-            fname: 'Vitaliy',
-            lname: 'Raev',
+            fName: 'Vitaliy',
+            lName: 'Raev',
             country: 'Belarus',
-            city: 'Grodno'
+            city: 'Grodno',
+            description: 'Суперэлектрик, и главное- очень скромный',
+            followed: true,
         },
         {
             id: 3,
-            fname: 'Olga',
-            lname: 'Raeva',
+            fName: 'Olga',
+            lName: 'Raeva',
             country: 'Belarus',
-            city: 'Grodno'
+            city: 'Grodno',
+            description: 'Суперпсихолог- открою тебе понимание-_-',
+            followed: true,
         },
         {
             id: 4,
-            fname: 'Vera',
-            lname: 'Raeva',
+            fName: 'Vera',
+            lName: 'Raeva',
             country: 'Belarus',
-            city: 'Grodno'
+            city: 'Grodno',
+            description: 'Тоже немного программист---',
+            followed: false,
         },
         {
             id: 5,
-            fname: 'Timofei',
-            lname: 'Raev',
+            fName: 'Timofei',
+            lName: 'Raev',
             country: 'Belarus',
-            city: 'Grodno'
+            city: 'Grodno',
+            description: 'Чё, катку будешь?',
+            followed: true,
         },
         {
             id: 6,
-            fname: 'Vanya',
-            lname: 'Batchkovich',
+            fName: 'Vanya',
+            lName: 'Batchkovich',
             country: 'Ukrain',
-            city: 'Shepetivka'
+            city: 'Shepetivka',
+            description: 'Я твой варкрафт проходил',
+            followed: false,
         },
     ],
 }
 
-const userReducer = (state = initialState) => {
-    return state;
+const userReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case FOLLOW:
+            return {
+                ...state,
+                usersData: state.usersData.map(u => {
+                    if (u.id === action.userID) {
+                        return {...u, followed: true};
+                    }
+                    return u;
+                })
+            }
+
+        case UNFOLLOW:
+            return {
+                ...state,
+                usersData: state.usersData.map((u) => {
+                    if (u.id === action.userID) {
+                        return {...u, followed: false}
+                    }
+                    return u;
+                })
+            }
+        default:
+            return state;
+    }
 }
+
+export const followActionCreator = (userID) => ({type: 'FOLLOW', userID})
+export const unfollowActionCreator = (userID) => ({type: 'UNFOLLOW', userID})
 
 export default userReducer;
