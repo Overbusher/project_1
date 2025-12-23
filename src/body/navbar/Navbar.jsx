@@ -9,6 +9,7 @@ export const Navbar = () => {
             <div className={st.rs}><NavLink to='/messages' className={activated}>Messages</NavLink></div>
             <div className={st.rs}><NavLink to='/news' className={activated}>News</NavLink></div>
             <div className={st.rs}><NavLink to='/settings' className={activated}>Settings</NavLink></div>
+            <div className={st.rs}><NavLink to='/findusers' className={activated}>Find Users</NavLink></div>
         </nav>
     );
 }

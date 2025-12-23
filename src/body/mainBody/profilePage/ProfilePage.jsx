@@ -3,7 +3,7 @@ import {Avatar} from "./avatar/Avatar";
 import {FLname} from "./fl_name/FLname";
 import {PostsContainer} from "./posts/PostsContainer";
 
-const ProfilePage = () => {
+export const ProfilePage = () => {
     return (<div className='profilePage'>
             <Avatar/>
             <FLname/>
@@ -11,5 +11,3 @@ const ProfilePage = () => {
         </div>
     )
 }
-
-export default ProfilePage;
