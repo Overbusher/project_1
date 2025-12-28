@@ -16,7 +16,6 @@ let initialState = {
         {key: 3, id: 2, message: 'Вы завтра к нам?'},
         {key: 4, id: 1, message: 'Я тебя очень сильно люблю!'},
         {key: 5, id: 1, message: 'Как твои дела?'},
-        {key: 6, id: 1, message: 'Не грусти из за того что мы поругались, мы помиримся и всё будет хорошо'},
         {key: 7, id: 2, message: 'Я буду готовить курицу'},
         {key: 8, id: 3, message: 'Привет'},
         {key: 9, id: 4, message: 'Vera'},
