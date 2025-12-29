@@ -1,14 +1,15 @@
 import st from './Posts.module.css'
-import React from 'react';
+import React, {useMemo} from 'react';
 
 
 export const Posts = (props) => {
 
-    let postsElements = props.postData.map(post =>
+    let postsElements = useMemo(() => {
+        return props.postData.map(post =>
         <div>
             <img alt="ava img." src={post.src}/>
             {post.text}
-        </div>)
+        </div>)}, [props.postData])
 
     let newPostElement = React.createRef();
 
