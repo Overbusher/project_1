@@ -1,12 +1,14 @@
 import st from './Posts.module.css'
-import {Post} from "./post/Post";
 import React from 'react';
 
 
 export const Posts = (props) => {
+
     let postsElements = props.postData.map(post =>
-        <Post key={post.id} texta={post.text}
-              srcs={post.src}/>)
+        <div>
+            <img alt="ava img." src={post.src}/>
+            {post.text}
+        </div>)
 
     let newPostElement = React.createRef();
 

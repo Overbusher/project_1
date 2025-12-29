@@ -1,4 +1,3 @@
-// import {Dialog} from "./dialog/Dialog";
 import st from "./Dialogs.module.css"
 import {NavLink} from "react-router-dom";
 
