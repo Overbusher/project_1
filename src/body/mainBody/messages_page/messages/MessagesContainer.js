@@ -11,8 +11,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addMessage: () => {
-            dispatch(addMessageActionCreator());
+        addMessage: (userID) => {
+            dispatch(addMessageActionCreator(userID));
         },
         isChange: (inputText) => {
             dispatch(inputMessageActionCreator(inputText));

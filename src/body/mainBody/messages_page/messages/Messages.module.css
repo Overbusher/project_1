@@ -2,6 +2,10 @@
 grid-area: mess;
 }
 
+.message {
+  padding: 5px;
+}
+
 .messages textarea {
   width: 99%;
 }

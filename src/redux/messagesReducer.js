@@ -3,30 +3,30 @@ const INPUT_MESSAGE = 'INPUT_MESSAGE';
 
 let initialState = {
     dialogData: [
-        {key: 1, id: 1, name: 'Diana'},
-        {key: 2, id: 2, name: 'Vitaliy'},
-        {key: 3, id: 3, name: 'Olga'},
-        {key: 4, id: 4, name: 'Vera'},
-        {key: 5, id: 5, name: 'Timofei'},
-        {key: 6, id: 6, name: 'Vanya'}
+        {id: 1, name: 'Diana'},
+        {id: 2, name: 'Vitaliy'},
+        {id: 3, name: 'Olga'},
+        {id: 4, name: 'Vera'},
+        {id: 5, name: 'Timofei'},
+        {id: 6, name: 'Vanya'}
     ],
     messageData: [
-        {key: 1, id: 1, message: 'Привет'},
-        {key: 2, id: 2, message: 'Привет'},
-        {key: 3, id: 2, message: 'Вы завтра к нам?'},
-        {key: 4, id: 1, message: 'Я тебя очень сильно люблю!'},
-        {key: 5, id: 1, message: 'Как твои дела?'},
-        {key: 7, id: 2, message: 'Я буду готовить курицу'},
-        {key: 8, id: 3, message: 'Привет'},
-        {key: 9, id: 4, message: 'Vera'},
-        {key: 10, id: 3, message: 'Я отдала весы'},
-        {key: 11, id: 3, message: 'Как у вас дела?'},
-        {key: 12, id: 4, message: 'Ха-ха'},
-        {key: 13, id: 4, message: 'а я пишу код лучше чем ты'},
-        {key: 14, id: 5, message: 'Привет, играть будешь?'},
-        {key: 15, id: 5, message: 'Ты тут?'},
-        {key: 16, id: 6, message: 'Привет, я сегодня не буду'},
-        {key: 17, id: 6, message: 'Чувствую себя не оч'}
+        {id: 1, message: 'Привет'},
+        {id: 2, message: 'Привет'},
+        {id: 2, message: 'Вы завтра к нам?'},
+        {id: 1, message: 'Я тебя очень сильно люблю!'},
+        {id: 1, message: 'Как твои дела?'},
+        {id: 2, message: 'Я буду готовить курицу'},
+        {id: 3, message: 'Привет'},
+        {id: 4, message: 'Vera'},
+        {id: 3, message: 'Я отдала весы'},
+        {id: 3, message: 'Как у вас дела?'},
+        {id: 4, message: 'Ха-ха'},
+        {id: 4, message: 'а я пишу код лучше чем ты'},
+        {id: 5, message: 'Привет, играть будешь?'},
+        {id: 5, message: 'Ты тут?'},
+        {id: 6, message: 'Привет, я сегодня не буду'},
+        {id: 6, message: 'Чувствую себя не оч'}
     ],
     inputMessageData: ''
 }
@@ -36,8 +36,7 @@ const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE: {
             let newMessage = {
-                key: 19,
-                id: 6,
+                id: action.userID,
                 message: state.inputMessageData
             };
             return {
@@ -58,7 +57,7 @@ const messagesReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
+export const addMessageActionCreator = (userID) => ({type: ADD_MESSAGE, userID});
 
 export const inputMessageActionCreator = (inputText) => ({type: INPUT_MESSAGE, inputText})
 

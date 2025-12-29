@@ -1,17 +1,28 @@
 import st from './Messages.module.css'
-import {Message} from "./message/Message";
-import React from "react";
+import React, {useMemo} from "react";
+import {useParams} from "react-router-dom";
 
 
 export const Messages = (props) => {
-    let messageData = props.messageData.map(msg =>
-        <Message key={msg.id} id={msg.id}
-                 message={msg.message}/>)
+
+    const {id} = useParams();
+    const userID = Number(id);
+
+    let filteredMessages = useMemo(() => {
+            return props.messageData.filter(msg => msg.id === userID)
+        },
+        [props.messageData, userID]);
+
+    let messageData = useMemo(() => {
+        return filteredMessages.map((msg, index) => <div key={index} className={st.message}>{msg.message}</div>)
+        },
+            [filteredMessages]);
+
 
     let newMessageElement = React.createRef();
 
     let onAddMessage = () => {
-        props.addMessage();
+        props.addMessage(userID);
     }
 
     let onIsChange = () => {
