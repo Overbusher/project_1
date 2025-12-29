@@ -1,11 +1,15 @@
-import {Dialog} from "./dialog/Dialog";
+// import {Dialog} from "./dialog/Dialog";
 import st from "./Dialogs.module.css"
+import {NavLink} from "react-router-dom";
 
 export const Dialogs = (props) => {
 
+    let activated = ({isActive}) => isActive ? st.active : st.dialog;
+
     let dialogData = props.dialogData.map(post =>
-        <Dialog key={post.id} id={post.id}
-              name={post.name}/>)
+        <div className={st.dialog}>
+            <NavLink to={"/messages/" + post.id} className={activated}>{post.name}</NavLink>
+        </div>)
 
     return (
         <div className={st.dialogs}>
