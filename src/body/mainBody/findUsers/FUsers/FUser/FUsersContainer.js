@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {FUsers} from "./FUsers";
+import FUsers from "./FUsers";
 import {followActionCreator, unfollowActionCreator, usersPushActionCreator} from "../../../../../redux/usersReducer";
 
 const mapStateToProps = (state) => {

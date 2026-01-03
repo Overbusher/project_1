@@ -1,8 +1,18 @@
+import React from "react"
 import st from './FUsers.module.css'
+import axios from "axios";
 
-export const FUsers = (props) => {
-    if (props.usersData.length === 0) {
-        props.usersPush([
+class FUsers extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        axios.get("https://social-network.samuraijs.com/api/1.0/users?page=100&count=100").then((response) => {
+            debugger
+            this.props.usersPush(response.data.items)
+        });
+
+        /*props.usersPush([
                 {
                     id: 1,
                     avatar: 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png',
@@ -63,30 +73,32 @@ export const FUsers = (props) => {
                     description: 'Я твой варкрафт проходил',
                     followed: false,
                 },
-            ])
+            ])*/
     }
 
-    let usersData = props.usersData.map(user =>
-            <div key={user.id} className={st.fUsers}>
-                <div className={st.avatar}>
-                    <div className={st.avatar}><img
-                        src={user.avatar}
-                        alt='Базовый аватар пользователя'/></div>
-                    {user.followed ? <button onClick={() => {props.unfollow(user.id)}}>Отписаться</button> :
-                        <button onClick={() => {props.follow(user.id)}}>Подписаться</button>}
-                </div>
-                <div className={st.fUserInf}>
-                    <div className={st.flname}>{user.fName} {user.lName}</div>
-                    <div className={st.description}>{user.description}</div>
-                    <div className={st.country}>{user.country},</div>
-                    <div className={st.city}>{user.city}</div>
-                </div>
+    usersData = () => this.props.usersData.map(user =>
+        <div key={user.id} className={st.fUsers}>
+            <div className={st.avatar}>
+                <div className={st.avatar}><img
+                    src={user?.photos.small ?? "https://cdn-icons-png.flaticon.com/512/6676/6676023.png"}
+                    alt='Базовый аватар пользователя'/></div>
+                {user.followed ? <button onClick={() => {
+                        this.props.unfollow(user.id)
+                    }}>Отписаться</button> :
+                    <button onClick={() => {
+                        this.props.follow(user.id)
+                    }}>Подписаться</button>}
             </div>
-        )
-
-    return (
-        <div>
-            {usersData}
+            <div className={st.fUserInf}>
+                <div className={st.flname}>{user.name}</div>
+                <div className={st.description}>{user.status}</div>
+            </div>
         </div>
     )
+
+    render() {
+        return <div>{this.usersData()}</div>
+    }
 }
+
+export default FUsers;
