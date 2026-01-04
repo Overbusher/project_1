@@ -35,7 +35,7 @@ class FUsers extends React.Component {
                     }}>Подписаться</button>}
             </div>
             <div className={st.fUserInf}>
-                <div className={st.flname}>{user.name}</div>
+                <div className={st.uname}>{user.name}</div>
                 <div className={st.description}>{user.status}</div>
             </div>
         </div>
@@ -43,16 +43,38 @@ class FUsers extends React.Component {
 
     render() {
         let usersPageCount = Math.ceil(this.props.totalUsersCount / this.props.usersOnPageCount)
+        const currentPage = this.props.usersPageNumber;
+        const pagesToShow = this.props.usersOnPageCount;
+        const middlePage = Math.ceil(pagesToShow / 2);
 
-        let pageCount = [];
+        let startPage;
 
-        for (let i = 1; i < usersPageCount; i++) {
-            pageCount.push(i);
+        if (currentPage <= middlePage) {
+            startPage = 1;
+        }
+        else if (currentPage > usersPageCount - middlePage)
+        {
+            startPage = usersPageCount - pagesToShow + 1;
+        }
+        else
+        {
+            startPage = currentPage - middlePage + 1;
         }
 
-        // let isOnClick = (i) => {this.props.nowPage(i)}
+        const endPage = Math.min(startPage + pagesToShow - 1);
 
-        let pageCountList = pageCount.map(i => <span className={this.props.usersPageNumber === i ? st.userListMapActive : st.userListMap} key={i} onClick={() => {this.onPageChanged(i)}}>{i}</span>)
+        // Создаем массив страниц для отображения
+        let pageCount = [];
+        for (let i = startPage; i <= endPage; i++) {
+            pageCount.push(i);
+        }
+// console.log(startPage);
+
+        let pageCountList = pageCount.map(i => <span
+            className={this.props.usersPageNumber === i ? st.userListMapActive : st.userListMap} key={i}
+            onClick={() => {
+                this.onPageChanged(i)
+            }}>{i}</span>)
 
         return (
             <div>
