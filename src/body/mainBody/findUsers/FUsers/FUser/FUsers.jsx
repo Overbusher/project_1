@@ -4,76 +4,21 @@ import axios from "axios";
 
 class FUsers extends React.Component {
 
-    constructor(props) {
-        super(props);
+    componentDidMount() {
 
-        axios.get("https://social-network.samuraijs.com/api/1.0/users?page=100&count=100").then((response) => {
-            debugger
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPageNumber}&count=${this.props.usersOnPageCount}`).then((response) => {
+            this.props.usersPush(response.data.items)
+            this.props.totalCount(response.data.totalCount)
+        });
+
+    }
+
+    onPageChanged = (p) => {
+        this.props.nowPage(p)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.usersOnPageCount}`).then((response) => {
             this.props.usersPush(response.data.items)
         });
 
-        /*props.usersPush([
-                {
-                    id: 1,
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png',
-                    fName: 'Diana',
-                    lName: 'Raeva',
-                    country: 'Belarus',
-                    city: 'Grodno',
-                    description: 'Красотка невиданных красот',
-                    followed: true,
-                },
-                {
-                    id: 2,
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png',
-                    fName: 'Vitaliy',
-                    lName: 'Raev',
-                    country: 'Belarus',
-                    city: 'Grodno',
-                    description: 'Суперэлектрик, и главное- очень скромный',
-                    followed: true,
-                },
-                {
-                    id: 3,
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png',
-                    fName: 'Olga',
-                    lName: 'Raeva',
-                    country: 'Belarus',
-                    city: 'Grodno',
-                    description: 'Суперпсихолог- открою тебе понимание-_-',
-                    followed: true,
-                },
-                {
-                    id: 4,
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png',
-                    fName: 'Vera',
-                    lName: 'Raeva',
-                    country: 'Belarus',
-                    city: 'Grodno',
-                    description: 'Тоже немного программист---',
-                    followed: false,
-                },
-                {
-                    id: 5,
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png',
-                    fName: 'Timofei',
-                    lName: 'Raev',
-                    country: 'Belarus',
-                    city: 'Grodno',
-                    description: 'Чё, катку будешь?',
-                    followed: true,
-                },
-                {
-                    id: 6,
-                    avatar: 'https://cdn-icons-png.flaticon.com/512/6676/6676023.png',
-                    fName: 'Vanya',
-                    lName: 'Batchkovich',
-                    country: 'Ukrain',
-                    city: 'Shepetivka',
-                    description: 'Я твой варкрафт проходил',
-                    followed: false,
-                },
-            ])*/
     }
 
     usersData = () => this.props.usersData.map(user =>
@@ -97,7 +42,23 @@ class FUsers extends React.Component {
     )
 
     render() {
-        return <div>{this.usersData()}</div>
+        let usersPageCount = Math.ceil(this.props.totalUsersCount / this.props.usersOnPageCount)
+
+        let pageCount = [];
+
+        for (let i = 1; i < usersPageCount; i++) {
+            pageCount.push(i);
+        }
+
+        // let isOnClick = (i) => {this.props.nowPage(i)}
+
+        let pageCountList = pageCount.map(i => <span className={this.props.usersPageNumber === i ? st.userListMapActive : st.userListMap} key={i} onClick={() => {this.onPageChanged(i)}}>{i}</span>)
+
+        return (
+            <div>
+                <div className={st.userList}>{pageCountList}</div>
+                <div>{this.usersData()}</div>
+            </div>)
     }
 }
 

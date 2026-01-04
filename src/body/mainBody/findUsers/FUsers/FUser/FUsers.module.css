@@ -48,3 +48,16 @@
   grid-area: description;
   padding: 5px
 }
+
+.userList {
+  margin: 10px;
+  width: 1600px;
+  word-break: break-all
+}
+
+.userListMap {
+  padding: 5px;
+}
+.userListMapActive {
+  font-weight: bold;
+}

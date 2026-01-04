@@ -3,11 +3,11 @@ grid-area: dial;
 }
 
 .dialog {
-  color:red;
+  color: black;
   padding: 2px;
 }
 
 .active {
-  color: aqua;
+  color: #925bc8;
   padding: 7px;
 }
