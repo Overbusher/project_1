@@ -1,5 +1,5 @@
 .mainBody {
   grid-area: c;
-  background-color: bisque;
-  border: solid 1px black;
+  background-color: beige;
+  border: 1px solid #BE763C;
 }

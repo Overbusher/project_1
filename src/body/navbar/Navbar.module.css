@@ -1,17 +1,25 @@
 .navbar {
   grid-area: n;
-  background-color: yellow;
   padding: 5px;
-  border: solid 1px black;
+  background-color: beige;
+  border: 1px solid #BE763C;
+  position: relative;
+  z-index: 5; /* Чтобы navbar был поверх header */
 }
 .rs {
   padding: 10px;
 }
+
+.rs_fst {
+  padding: 10px;
+  margin-left: 50px;
+}
+
 .item {
-  color: red;
+  color: black;
 }
 
 .active {
-  color: aqua;
+  color: #925bc8;
   padding: 15px;
 }
