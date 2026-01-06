@@ -5,11 +5,16 @@ import axios from "axios";
 class FUsers extends React.Component {
 
     componentDidMount() {
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPageNumber}&count=${this.props.usersOnPageCount}`).then((response) => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPageNumber}&count=${this.props.usersOnPageCount}`, {
+            withCredentials: true,
+            headers: { "API-KEY": "1b58b488-6bf1-4d5a-a89f-416bec40dd38" }}).then((response) => {
             this.props.usersPush(response.data.items)
             this.props.totalCount(response.data.totalCount)
         });
+        /*axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPageNumber}&count=${this.props.usersOnPageCount}`).then((response) => {
+            this.props.usersPush(response.data.items)
+            this.props.totalCount(response.data.totalCount)
+        });*/
 
     }
 
