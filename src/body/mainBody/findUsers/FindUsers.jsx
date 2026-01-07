@@ -1,5 +1,5 @@
 import st from './FindUsers.module.css';
-import {FUsersContainer} from "./FUsers/FUser/FUsersContainer";
+import FUsersContainer from "./FUsers/FUsersContainer";
 
 export const FindUsers = () => {
     return (

@@ -6,7 +6,7 @@ export const Dialogs = (props) => {
     let activated = ({isActive}) => isActive ? st.active : st.dialog;
 
     let dialogData = props.dialogData.map(post =>
-        <div className={st.dialog}>
+        <div className={st.dialog} key={post.id}>
             <NavLink to={"/messages/" + post.id} className={activated}>{post.name}</NavLink>
         </div>)
 
