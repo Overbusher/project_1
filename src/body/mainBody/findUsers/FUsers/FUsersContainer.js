@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {
-    followActionCreator, nowPageNumberActionCreator,
+    followActionCreator, isFetchingActionCreator, nowPageNumberActionCreator,
     totalUsersCountActionCreator,
     unfollowActionCreator,
     usersPushActionCreator
@@ -12,18 +12,23 @@ import FUsers from "./FUsers";
 class FUsersContainer extends React.Component {
 
     componentDidMount() {
+        this.props.fetchingStatus(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPageNumber}&count=${this.props.usersOnPageCount}`, {
             withCredentials: true,
-            headers: { "API-KEY": "0b41bd70-2e2e-4d42-b2f6-1144d9e838b5" }}).then((response) => {
+            headers: {"API-KEY": "1b58b488-6bf1-4d5a-a89f-416bec40dd38"}
+        }).then((response) => {
             this.props.usersPush(response.data.items)
             this.props.totalCount(response.data.totalCount)
+            this.props.fetchingStatus(false)
         });
     }
 
     onPageChanged = (p) => {
+        this.props.fetchingStatus(true)
         this.props.nowPage(p)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.usersOnPageCount}`).then((response) => {
             this.props.usersPush(response.data.items)
+            this.props.fetchingStatus(false)
         });
 
     }
@@ -35,7 +40,9 @@ class FUsersContainer extends React.Component {
                        onPageChanged={this.onPageChanged}
                        usersData={this.props.usersData}
                        unfollow={this.props.unfollow}
-                       follow={this.props.follow}/>
+                       follow={this.props.follow}
+                       isFetching={this.props.isFetching}
+                       fetchingStatus={this.props.fetchingStatus}    />
     }
 }
 
@@ -46,7 +53,7 @@ const mapStateToProps = (state) => {
         usersOnPageCount: state.fusersPage.usersOnPageCount,
         totalUsersCount: state.fusersPage.totalUsersCount,
         usersPageNumber: state.fusersPage.usersPageNumber,
-
+        isFetching: state.fusersPage.isFetching,
     }
 }
 
@@ -67,8 +74,11 @@ const mapDispatchToProps = (dispatch) => {
         },
         nowPage: (number) => {
             dispatch(nowPageNumberActionCreator(number));
+        },
+        fetchingStatus: (status) => {
+            dispatch(isFetchingActionCreator(status));
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (FUsersContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FUsersContainer);

@@ -1,5 +1,6 @@
 import st from "./FUsers.module.css";
 import React from "react";
+import preloader from '../../../../assets/images/preloader.svg';
 
 
 const FUsers = (props) => {
@@ -13,13 +14,9 @@ const FUsers = (props) => {
 
     if (currentPage <= middlePage) {
         startPage = 1;
-    }
-    else if (currentPage > usersPageCount - middlePage)
-    {
+    } else if (currentPage > usersPageCount - middlePage) {
         startPage = usersPageCount - pagesToShow + 1;
-    }
-    else
-    {
+    } else {
         startPage = currentPage - middlePage + 1;
     }
 
@@ -57,10 +54,15 @@ const FUsers = (props) => {
     )
 
     return (
-        <div>
-            <div className={st.userList}>{pageCountList}</div>
-            <div>{usersData()}</div>
-        </div>
+        (props.isFetching ?
+                <div>
+                    <img alt={'Loader-gif'} src={preloader}/>
+                </div> :
+                <div>
+                    <div className={st.userList}>{pageCountList}</div>
+                    <div>{usersData()}</div>
+                </div>
+        )
     )
 }
 
