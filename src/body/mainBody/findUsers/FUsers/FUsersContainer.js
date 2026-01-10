@@ -1,26 +1,29 @@
 import {connect} from "react-redux";
 import {
-    followActionCreator, isFetchingActionCreator, nowPageNumberActionCreator,
-    totalUsersCountActionCreator,
-    unfollowActionCreator,
-    usersPushActionCreator
+    fetchingStatus, follow,
+    nowPage,totalUCount,
+    unfollow, usersPush
 } from "../../../../redux/usersReducer";
+import {userIdSet} from "../../../../redux/profileReducer";
 import React from "react";
 import axios from "axios";
 import FUsers from "./FUsers";
 
+
 class FUsersContainer extends React.Component {
 
     componentDidMount() {
+        if (this.props.usersData.length === 0){
         this.props.fetchingStatus(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPageNumber}&count=${this.props.usersOnPageCount}`, {
             withCredentials: true,
             headers: {"API-KEY": "1b58b488-6bf1-4d5a-a89f-416bec40dd38"}
         }).then((response) => {
             this.props.usersPush(response.data.items)
-            this.props.totalCount(response.data.totalCount)
+            this.props.totalUCount(response.data.totalCount)
             this.props.fetchingStatus(false)
-        });
+        });}
+        else this.props.fetchingStatus(false)
     }
 
     onPageChanged = (p) => {
@@ -42,7 +45,8 @@ class FUsersContainer extends React.Component {
                        unfollow={this.props.unfollow}
                        follow={this.props.follow}
                        isFetching={this.props.isFetching}
-                       fetchingStatus={this.props.fetchingStatus}    />
+                       fetchingStatus={this.props.fetchingStatus}
+                       userIdSet={this.props.userIdSet}/>
     }
 }
 
@@ -57,28 +61,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-
-    return {
-        follow: (userID) => {
-            dispatch(followActionCreator(userID));
-        },
-        unfollow: (userID) => {
-            dispatch(unfollowActionCreator(userID));
-        },
-        usersPush: (users) => {
-            dispatch(usersPushActionCreator(users));
-        },
-        totalCount: (count) => {
-            dispatch(totalUsersCountActionCreator(count));
-        },
-        nowPage: (number) => {
-            dispatch(nowPageNumberActionCreator(number));
-        },
-        fetchingStatus: (status) => {
-            dispatch(isFetchingActionCreator(status));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FUsersContainer);
+export default connect(mapStateToProps, {follow, unfollow, usersPush, totalUCount, nowPage, fetchingStatus, userIdSet})(FUsersContainer);
