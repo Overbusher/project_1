@@ -13,7 +13,7 @@ export const MainBody = () => {
                 <Routes>
                     <Route path="/" element={<ProfilePage/>}/>
                     <Route path='/messages/*' element={<MessagesPage/>}/>
-                    <Route path='/home' element={<ProfilePage/>}/>
+                    <Route path='/profile/:profileId?' element={<ProfilePage/>}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                     <Route path='/findusers' element={<FindUsers/>}/>

@@ -1,0 +1,39 @@
+.postsGrid {
+  display: grid;
+  grid-template-areas:
+  "ava fln"
+  "pst pst";
+  grid-auto-rows: auto ;
+  grid-template-columns: 1fr 10fr;
+  grid-gap: 10px;
+}
+
+.posts {
+ grid-area: pst;
+  padding: 5px;
+}
+
+.posts img {
+  width: 80px;
+  border-radius: 40px;
+}
+
+.posts textarea {
+  width: 99%;
+}
+
+.avatar {
+  grid-area: ava;
+  padding: 10px 10px;
+}
+
+.avatar img {
+  height: 200px;
+  border-radius: 100px; /* Радиус скругления */
+  border: 3px solid deepskyblue; /* Параметры рамки */
+  box-shadow: 0 0 7px #666; /* Параметры тени */
+}
+
+.flname {
+  grid-area: fln;
+}

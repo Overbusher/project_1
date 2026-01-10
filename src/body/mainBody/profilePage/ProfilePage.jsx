@@ -1,13 +1,9 @@
 import './ProfilePage.css'
-import {Avatar} from "./avatar/Avatar";
-import {FLname} from "./fl_name/FLname";
-import {PostsContainer} from "./posts/PostsContainer";
+import ProfileContainer from "./Profile/ProfileContainer";
 
 export const ProfilePage = () => {
     return (<div className='profilePage'>
-            <Avatar/>
-            <FLname/>
-            <PostsContainer/>
+            <ProfileContainer />
         </div>
     )
 }
