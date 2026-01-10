@@ -1,10 +1,10 @@
 import st from "./FUsers.module.css";
 import React from "react";
-import preloader from '../../../../assets/images/preloader.svg';
+import {NavLink} from "react-router-dom";
+import {Preloader} from "../../../common/preloader/Preloader";
 
 
 const FUsers = (props) => {
-
     let usersPageCount = Math.ceil(props.totalUsersCount / props.usersOnPageCount)
     const currentPage = props.usersPageNumber;
     const pagesToShow = props.usersOnPageCount;
@@ -36,9 +36,13 @@ const FUsers = (props) => {
     let usersData = () => props.usersData.map(user =>
         <div key={user.id} className={st.fUsers}>
             <div className={st.avatar}>
-                <div className={st.avatar}><img
+                <div className={st.avatar}>
+                    <NavLink to={"/profile/" + user.id} className={st.avatar} onClick={() => {props.userIdSet(user.id)}}>
+                    <img
                     src={user?.photos.small ?? "https://cdn-icons-png.flaticon.com/512/6676/6676023.png"}
-                    alt='Базовый аватар пользователя'/></div>
+                    alt="Базовый аватар пользователя"/>
+                    </NavLink>
+                </div>
                 {user.followed ? <button onClick={() => {
                         props.unfollow(user.id)
                     }}>Отписаться</button> :
@@ -55,9 +59,7 @@ const FUsers = (props) => {
 
     return (
         (props.isFetching ?
-                <div>
-                    <img alt={'Loader-gif'} src={preloader}/>
-                </div> :
+                <Preloader /> :
                 <div>
                     <div className={st.userList}>{pageCountList}</div>
                     <div>{usersData()}</div>
