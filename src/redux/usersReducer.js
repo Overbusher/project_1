@@ -7,7 +7,7 @@ let IS_FETCHING = 'IS_FETCHING';
 
 let initialState = {
     usersData: [],
-    usersOnPageCount: 10,
+    usersOnPageCount: 11,
     totalUsersCount: 0,
     usersPageNumber: 1,
     isFetching: false,
