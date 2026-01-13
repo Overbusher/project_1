@@ -2,15 +2,31 @@
   grid-area: h;
   background-color: #925bc8;
   border: 1px solid #BE763C;
-  padding: 50px 5px;
+  padding: 10px 5px 1px;
+}
+
+.userHalf {
+  display: flex;
+  justify-content: right;
+  margin-right: 10px;
+}
+
+.userHalf img {
+  width: 70px;
+}
+
+.userName {
+  text-align: center;
+}
+
+.imageHalf {
   position: relative;
   display: flex;
   justify-content: left;
   align-items: flex-end;
-
 }
 
-.header img {
+.imageHalf img {
   width: 100px;
   position: absolute;
   bottom: -47px; /* Половина высоты картинки (или половина нужного размера) */

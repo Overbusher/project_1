@@ -1,5 +1,5 @@
 import React from "react";
-import {addPost, fetchingStatus, inputPost, inputUserData} from "../../../../redux/profileReducer";
+import {fetchingStatus, inputUserData, userIdSet} from "../../../../redux/profileReducer";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import axios from "axios";
@@ -12,6 +12,7 @@ class ProfileContainer extends React.Component {
         if (!profileId) {
             profileId = 32717;
         }
+        this.props.userIdSet(profileId);
         this.props.fetchingStatus(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${profileId}`, {
             withCredentials: true,
@@ -30,12 +31,12 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         isFetching: state.profilePage.isFetching,
+        userData: state.profilePage.userData,
         userId: state.profilePage.userId,
-        userData: state.profilePage.userData
 
     }
 }
 
 
 
-export default connect(mapStateToProps, {addPost, inputPost, fetchingStatus, inputUserData})(withRouter(ProfileContainer))
+export default connect(mapStateToProps, {fetchingStatus, inputUserData, userIdSet})(withRouter(ProfileContainer))
