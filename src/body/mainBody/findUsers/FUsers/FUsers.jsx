@@ -44,10 +44,10 @@ const FUsers = (props) => {
                     </NavLink>
                 </div>
                 {user.followed ? <button onClick={() => {
-                        props.unfollow(user.id)
+                        props.isOnUnfollow(user.id)
                     }}>Отписаться</button> :
                     <button onClick={() => {
-                        props.follow(user.id)
+                        props.isOnFollow(user.id)
                     }}>Подписаться</button>}
             </div>
             <div className={st.fUserInf}>
