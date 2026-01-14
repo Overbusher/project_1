@@ -6,8 +6,8 @@ import {
 } from "../../../../redux/usersReducer";
 import {userIdSet} from "../../../../redux/profileReducer";
 import React from "react";
-import axios from "axios";
 import FUsers from "./FUsers";
+import {followDelete, followPost, getUsers} from "../../../../api/api";
 
 
 class FUsersContainer extends React.Component {
@@ -15,12 +15,9 @@ class FUsersContainer extends React.Component {
     componentDidMount() {
         if (this.props.usersData.length === 0) {
             this.props.fetchingStatus(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.usersPageNumber}&count=${this.props.usersOnPageCount}`, {
-                withCredentials: true,
-                headers: {"API-KEY": "1b58b488-6bf1-4d5a-a89f-416bec40dd38"}
-            }).then((response) => {
-                this.props.usersPush(response.data.items)
-                this.props.totalUCount(response.data.totalCount)
+            getUsers(this.props.usersPageNumber, this.props.usersOnPageCount).then((data) => {
+                this.props.usersPush(data.items)
+                this.props.totalUCount(data.totalCount)
                 this.props.fetchingStatus(false)
             });
         } else this.props.fetchingStatus(false)
@@ -29,11 +26,8 @@ class FUsersContainer extends React.Component {
     onPageChanged = (p) => {
         this.props.fetchingStatus(true)
         this.props.nowPage(p)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.usersOnPageCount}`, {
-            withCredentials: true,
-            headers: {"API-KEY": "1b58b488-6bf1-4d5a-a89f-416bec40dd38"}
-        }).then((response) => {
-            this.props.usersPush(response.data.items)
+        getUsers(p, this.props.usersOnPageCount).then((data) => {
+            this.props.usersPush(data.items)
             this.props.fetchingStatus(false)
         })
         ;
@@ -41,12 +35,8 @@ class FUsersContainer extends React.Component {
     }
 
     isOnFollow = (id) => {
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {}, {
-            withCredentials: true,
-            headers: {"API-KEY": "1b58b488-6bf1-4d5a-a89f-416bec40dd38"}
-        }).then((response) => {
-                debugger
-                if (response.data.resultCode == 0) {
+        followPost(id).then((data) => {
+                if (data.resultCode == 0) {
                     this.props.follow(id);
                 }
             }
@@ -54,11 +44,8 @@ class FUsersContainer extends React.Component {
     }
 
     isOnUnfollow = (id) => {
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${id}`, {
-            withCredentials: true,
-            headers: {"API-KEY": "1b58b488-6bf1-4d5a-a89f-416bec40dd38"}
-        }).then((response) => {
-            if (response.data.resultCode == 0) {
+        followDelete(id).then((data) => {
+            if (data.resultCode == 0) {
                 this.props.unfollow(id)
             }
         });
