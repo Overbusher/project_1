@@ -12,7 +12,7 @@ let initialState = {
     totalUsersCount: 0,
     usersPageNumber: 1,
     isFetching: false,
-    loadingState: false,
+    loadingState: [],
 
 }
 
@@ -61,7 +61,9 @@ const userReducer = (state = initialState, action) => {
         case IS_IT_LOADING: {
             return {
                 ...state,
-                loadingState: action.loadStatus,
+                loadingState: action.loadStatus
+                    ? [...state.loadingState, action.userLStatusId]
+                    : [...state.loadingState.filter(id => id !== action.userLStatusId)]
             }
         }
         default:
@@ -75,6 +77,6 @@ export const usersPush = (users) => ({type: 'USERS_PUSH', users})
 export const totalUCount = (count) => ({type: 'TOTAL_USERS_COUNT', count})
 export const nowPage = (number) => ({type: 'NOW_PAGE_NUMBER', number})
 export const fetchingStatus = (status) => ({type: 'IS_FETCHING', status})
-export const isItLoading = (loadStatus) => ({type: 'IS_IT_LOADING', loadStatus})
+export const isItLoading = (loadStatus, userLStatusId) => ({type: 'IS_IT_LOADING', loadStatus, userLStatusId})
 
 export default userReducer;

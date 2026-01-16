@@ -34,23 +34,23 @@ class FUsersContainer extends React.Component {
     }
 
     isOnFollow = (id) => {
-        this.props.isItLoading(true)
+        this.props.isItLoading(true, id)
         followPost(id).then((data) => {
-                if (data.resultCode == 0) {
+                if (data.resultCode === 0) {
                     this.props.follow(id);
                 }
-            this.props.isItLoading(false)
+            this.props.isItLoading(false, id)
             }
         );
     }
 
     isOnUnfollow = (id) => {
-        this.props.isItLoading(true)
+        this.props.isItLoading(true, id)
         followDelete(id).then((data) => {
-            if (data.resultCode == 0) {
+            if (data.resultCode === 0) {
                 this.props.unfollow(id)
             }
-            this.props.isItLoading(false)
+            this.props.isItLoading(false, id)
         });
     }
 

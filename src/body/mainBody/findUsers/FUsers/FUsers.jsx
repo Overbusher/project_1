@@ -43,10 +43,10 @@ const FUsers = (props) => {
                     alt="Базовый аватар пользователя"/>
                     </NavLink>
                 </div>
-                {user.followed ? <button disabled={props.loadingState} onClick={() => {
+                {user.followed ? <button disabled={props.loadingState.some(id => id === user.id)} onClick={() => {
                         props.isOnUnfollow(user.id)
                     }}>Отписаться</button> :
-                    <button disabled={props.loadingState} onClick={() => {
+                    <button disabled={props.loadingState.some(id => id === user.id)} onClick={() => {
                         props.isOnFollow(user.id)
                     }}>Подписаться</button>}
             </div>
