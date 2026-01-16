@@ -11,7 +11,7 @@ class HeaderContainer extends React.Component {
             (data) => {
                 this.props.setUserData(data.data);
             })
-            .then((response) => {
+            .then(() => {
                 getProfile(this.props.profileId).then((data) => {
                     this.props.setPhoto(data.photos.small);
                     this.props.fetchingStatus(false);

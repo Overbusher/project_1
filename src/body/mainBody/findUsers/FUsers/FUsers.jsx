@@ -37,16 +37,16 @@ const FUsers = (props) => {
         <div key={user.id} className={st.fUsers}>
             <div className={st.avatar}>
                 <div className={st.avatar}>
-                    <NavLink to={"/profile/" + user.id} className={st.avatar} onClick={() => {props.userIdSet(user.id)}}>
+                    <NavLink to={"/profile/" + user.id} className={st.avatar}>
                     <img
                     src={user?.photos.small ?? "https://cdn-icons-png.flaticon.com/512/6676/6676023.png"}
                     alt="Базовый аватар пользователя"/>
                     </NavLink>
                 </div>
-                {user.followed ? <button onClick={() => {
+                {user.followed ? <button disabled={props.loadingState} onClick={() => {
                         props.isOnUnfollow(user.id)
                     }}>Отписаться</button> :
-                    <button onClick={() => {
+                    <button disabled={props.loadingState} onClick={() => {
                         props.isOnFollow(user.id)
                     }}>Подписаться</button>}
             </div>

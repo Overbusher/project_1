@@ -1,10 +1,9 @@
 import {connect} from "react-redux";
 import {
-    fetchingStatus, follow,
+    fetchingStatus, follow, isItLoading,
     nowPage, totalUCount,
     unfollow, usersPush
 } from "../../../../redux/usersReducer";
-import {userIdSet} from "../../../../redux/profileReducer";
 import React from "react";
 import FUsers from "./FUsers";
 import {followDelete, followPost, getUsers} from "../../../../api/api";
@@ -35,19 +34,23 @@ class FUsersContainer extends React.Component {
     }
 
     isOnFollow = (id) => {
+        this.props.isItLoading(true)
         followPost(id).then((data) => {
                 if (data.resultCode == 0) {
                     this.props.follow(id);
                 }
+            this.props.isItLoading(false)
             }
         );
     }
 
     isOnUnfollow = (id) => {
+        this.props.isItLoading(true)
         followDelete(id).then((data) => {
             if (data.resultCode == 0) {
                 this.props.unfollow(id)
             }
+            this.props.isItLoading(false)
         });
     }
 
@@ -59,9 +62,9 @@ class FUsersContainer extends React.Component {
                        usersData={this.props.usersData}
                        isFetching={this.props.isFetching}
                        fetchingStatus={this.props.fetchingStatus}
-                       userIdSet={this.props.userIdSet}
                        isOnUnfollow={this.isOnUnfollow}
-                       isOnFollow={this.isOnFollow}/>
+                       isOnFollow={this.isOnFollow}
+                       loadingState={this.props.loadingState}/>
     }
 }
 
@@ -74,6 +77,7 @@ const mapStateToProps = (state) => {
         usersPageNumber: state.fusersPage.usersPageNumber,
         isFetching: state.fusersPage.isFetching,
         queryResult: state.fusersPage.queryResult,
+        loadingState: state.fusersPage.loadingState,
     }
 }
 
@@ -84,5 +88,5 @@ export default connect(mapStateToProps, {
     totalUCount,
     nowPage,
     fetchingStatus,
-    userIdSet,
+    isItLoading,
 })(FUsersContainer);

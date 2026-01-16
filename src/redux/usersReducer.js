@@ -4,6 +4,7 @@ let USERS_PUSH = 'USERS_PUSH';
 let TOTAL_USERS_COUNT = 'TOTAL_USERS_COUNT';
 let NOW_PAGE_NUMBER = 'NOW_PAGE_NUMBER';
 let IS_FETCHING = 'IS_FETCHING';
+let IS_IT_LOADING = 'IS_IT_LOADING';
 
 let initialState = {
     usersData: [],
@@ -11,6 +12,7 @@ let initialState = {
     totalUsersCount: 0,
     usersPageNumber: 1,
     isFetching: false,
+    loadingState: false,
 
 }
 
@@ -56,6 +58,12 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.status
             }
+        case IS_IT_LOADING: {
+            return {
+                ...state,
+                loadingState: action.loadStatus,
+            }
+        }
         default:
             return state;
     }
@@ -67,5 +75,6 @@ export const usersPush = (users) => ({type: 'USERS_PUSH', users})
 export const totalUCount = (count) => ({type: 'TOTAL_USERS_COUNT', count})
 export const nowPage = (number) => ({type: 'NOW_PAGE_NUMBER', number})
 export const fetchingStatus = (status) => ({type: 'IS_FETCHING', status})
+export const isItLoading = (loadStatus) => ({type: 'IS_IT_LOADING', loadStatus})
 
 export default userReducer;
