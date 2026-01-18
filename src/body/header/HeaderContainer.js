@@ -1,23 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
-import {fetchingStatus, setPhoto, setUserData} from "../../redux/authReducer";
+import {getAuth} from "../../redux/authReducer";
 import {Header} from "./Header";
-import {API} from "../../api/api";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        this.props.fetchingStatus(true);
-        API.getAuth().then(
-            (data) => {
-                this.props.setUserData(data.data);
-            })
-            .then(() => {
-                API.getProfile(this.props.profileId).then((data) => {
-                    this.props.setPhoto(data.photos.small);
-                    this.props.fetchingStatus(false);
-                })
-            }
-            )
+        this.props.getAuth()
     };
 
 
@@ -30,9 +18,8 @@ let mapStateToProps = (state) => {
     return {
         profileId: state.authPage.id,
         photo: state.authPage.photo,
-        fullName: state.authPage.fullName,
         login: state.authPage.login,
     }
 }
 
-export default connect(mapStateToProps, {setUserData, fetchingStatus, setPhoto})(HeaderContainer);
+export default connect(mapStateToProps, {getAuth})(HeaderContainer);

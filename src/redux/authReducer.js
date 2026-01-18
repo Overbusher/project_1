@@ -1,6 +1,8 @@
+import {API} from "../api/api";
+
 let SET_USER_DATA = 'SET_USER_DATA';
 let IS_FETCHING = 'IS_FETCHING';
-let SET_PROFILE_DATA = 'SET_PHOTO';
+let SET_PHOTO = 'SET_PHOTO';
 
 
 let initialState = {
@@ -9,7 +11,6 @@ let initialState = {
     login: null,
     email: null,
     photo: null,
-    fullName: null,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -26,12 +27,10 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.status
             }
-        case SET_PROFILE_DATA:
+        case SET_PHOTO:
             return {
                 ...state,
-                photo: action.profileData.photos.small,
-                fullName: action.profileData.fullName,
-
+                photo: action.photoURL
             }
         default:
             return state;
@@ -40,6 +39,20 @@ const authReducer = (state = initialState, action) => {
 
 export const setUserData = (userData) => ({type: 'SET_USER_DATA', userData})
 export const fetchingStatus = (status) => ({type: 'IS_FETCHING', status})
-export const setPhoto = (profileData) => ({type: 'SET_PROFILE_DATA', profileData})
+export const setPhoto = (photoURL) => ({type: 'SET_PHOTO', photoURL})
+
+export const getAuth = () => {
+    return (dispatch) => {
+        dispatch(fetchingStatus(true))
+        API.getAuth().then(
+            (data) => {
+                dispatch(setUserData(data.data))
+                API.getProfile(data.data.id).then((data) => {
+                    dispatch(setPhoto(data.photos.small))
+                    dispatch(fetchingStatus(false))
+                })
+            })
+    }
+}
 
 export default authReducer;
