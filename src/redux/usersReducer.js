@@ -1,3 +1,5 @@
+import {followDelete, followPost, getUsers} from "../api/api";
+
 let FOLLOW = 'FOLLOW';
 let UNFOLLOW = 'UNFOLLOW';
 let USERS_PUSH = 'USERS_PUSH';
@@ -78,5 +80,54 @@ export const totalUCount = (count) => ({type: 'TOTAL_USERS_COUNT', count})
 export const nowPage = (number) => ({type: 'NOW_PAGE_NUMBER', number})
 export const fetchingStatus = (status) => ({type: 'IS_FETCHING', status})
 export const isItLoading = (loadStatus, userLStatusId) => ({type: 'IS_IT_LOADING', loadStatus, userLStatusId})
+
+export const getUsersThunkCreator = (usersData, usersPageNumber, usersOnPageCount) => {
+    return (dispatch) => {
+        if (usersData.length === 0) {
+            dispatch(fetchingStatus(true))
+            getUsers(usersPageNumber, usersOnPageCount).then((data) => {
+                dispatch(usersPush(data.items))
+                dispatch(totalUCount(data.totalCount))
+                dispatch(fetchingStatus(false))
+            });
+        } else dispatch(fetchingStatus(false))
+    }
+}
+
+export const getUsersUpdateThunkCreator = (p, usersOnPageCount) => {
+    return (dispatch) => {
+        dispatch(fetchingStatus(true))
+        dispatch(nowPage(p))
+        getUsers(p, usersOnPageCount).then((data) => {
+            dispatch(usersPush(data.items))
+            dispatch(fetchingStatus(false))
+        });
+    }
+}
+
+export const followPostThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(isItLoading(true, id))
+        followPost(id).then((data) => {
+                if (data.resultCode === 0) {
+                    dispatch(follow(id));
+                }
+                dispatch(isItLoading(false, id))
+            }
+        );
+    }
+}
+
+export const followDeleteThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(isItLoading(true, id))
+        followDelete(id).then((data) => {
+            if (data.resultCode === 0) {
+                dispatch(unfollow(id))
+            }
+            dispatch(isItLoading(false, id))
+        });
+    }
+}
 
 export default userReducer;

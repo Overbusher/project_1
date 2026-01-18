@@ -1,57 +1,32 @@
+import React from "react";
 import {connect} from "react-redux";
 import {
-    fetchingStatus, follow, isItLoading,
-    nowPage, totalUCount,
-    unfollow, usersPush
+    fetchingStatus, follow,
+    followDeleteThunkCreator, followPostThunkCreator,
+    getUsersThunkCreator, getUsersUpdateThunkCreator,
+    isItLoading, nowPage,
+    totalUCount, unfollow,
+    usersPush
 } from "../../../../redux/usersReducer";
-import React from "react";
 import FUsers from "./FUsers";
-import {followDelete, followPost, getUsers} from "../../../../api/api";
 
 
 class FUsersContainer extends React.Component {
 
     componentDidMount() {
-        if (this.props.usersData.length === 0) {
-            this.props.fetchingStatus(true)
-            getUsers(this.props.usersPageNumber, this.props.usersOnPageCount).then((data) => {
-                this.props.usersPush(data.items)
-                this.props.totalUCount(data.totalCount)
-                this.props.fetchingStatus(false)
-            });
-        } else this.props.fetchingStatus(false)
+       this.props.getUsersThunkCreator(this.props.usersData, this.props.usersPageNumber, this.props.usersOnPageCount)
     }
 
     onPageChanged = (p) => {
-        this.props.fetchingStatus(true)
-        this.props.nowPage(p)
-        getUsers(p, this.props.usersOnPageCount).then((data) => {
-            this.props.usersPush(data.items)
-            this.props.fetchingStatus(false)
-        })
-        ;
-
+        this.props.getUsersUpdateThunkCreator(p, this.props.usersOnPageCount)
     }
 
     isOnFollow = (id) => {
-        this.props.isItLoading(true, id)
-        followPost(id).then((data) => {
-                if (data.resultCode === 0) {
-                    this.props.follow(id);
-                }
-            this.props.isItLoading(false, id)
-            }
-        );
+        this.props.followPostThunkCreator(id)
     }
 
     isOnUnfollow = (id) => {
-        this.props.isItLoading(true, id)
-        followDelete(id).then((data) => {
-            if (data.resultCode === 0) {
-                this.props.unfollow(id)
-            }
-            this.props.isItLoading(false, id)
-        });
+        this.props.followDeleteThunkCreator(id)
     }
 
     render() {
@@ -89,4 +64,8 @@ export default connect(mapStateToProps, {
     nowPage,
     fetchingStatus,
     isItLoading,
+    getUsersThunkCreator,
+    getUsersUpdateThunkCreator,
+    followPostThunkCreator,
+    followDeleteThunkCreator,
 })(FUsersContainer);
