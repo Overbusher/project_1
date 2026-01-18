@@ -1,4 +1,4 @@
-import {followDelete, followPost, getUsers} from "../api/api";
+import {API} from "../api/api";
 
 let FOLLOW = 'FOLLOW';
 let UNFOLLOW = 'UNFOLLOW';
@@ -81,11 +81,11 @@ export const nowPage = (number) => ({type: 'NOW_PAGE_NUMBER', number})
 export const fetchingStatus = (status) => ({type: 'IS_FETCHING', status})
 export const isItLoading = (loadStatus, userLStatusId) => ({type: 'IS_IT_LOADING', loadStatus, userLStatusId})
 
-export const getUsersThunkCreator = (usersData, usersPageNumber, usersOnPageCount) => {
+export const getUsers = (usersData, usersPageNumber, usersOnPageCount) => {
     return (dispatch) => {
         if (usersData.length === 0) {
             dispatch(fetchingStatus(true))
-            getUsers(usersPageNumber, usersOnPageCount).then((data) => {
+            API.getUsers(usersPageNumber, usersOnPageCount).then((data) => {
                 dispatch(usersPush(data.items))
                 dispatch(totalUCount(data.totalCount))
                 dispatch(fetchingStatus(false))
@@ -94,21 +94,21 @@ export const getUsersThunkCreator = (usersData, usersPageNumber, usersOnPageCoun
     }
 }
 
-export const getUsersUpdateThunkCreator = (p, usersOnPageCount) => {
+export const getUsersUpdate = (p, usersOnPageCount) => {
     return (dispatch) => {
         dispatch(fetchingStatus(true))
         dispatch(nowPage(p))
-        getUsers(p, usersOnPageCount).then((data) => {
+        API.getUsers(p, usersOnPageCount).then((data) => {
             dispatch(usersPush(data.items))
             dispatch(fetchingStatus(false))
         });
     }
 }
 
-export const followPostThunkCreator = (id) => {
+export const followPost = (id) => {
     return (dispatch) => {
         dispatch(isItLoading(true, id))
-        followPost(id).then((data) => {
+        API.followPost(id).then((data) => {
                 if (data.resultCode === 0) {
                     dispatch(follow(id));
                 }
@@ -118,10 +118,10 @@ export const followPostThunkCreator = (id) => {
     }
 }
 
-export const followDeleteThunkCreator = (id) => {
+export const followDelete = (id) => {
     return (dispatch) => {
         dispatch(isItLoading(true, id))
-        followDelete(id).then((data) => {
+        API.followDelete(id).then((data) => {
             if (data.resultCode === 0) {
                 dispatch(unfollow(id))
             }

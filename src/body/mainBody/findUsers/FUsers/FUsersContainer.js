@@ -1,12 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    fetchingStatus, follow,
-    followDeleteThunkCreator, followPostThunkCreator,
-    getUsersThunkCreator, getUsersUpdateThunkCreator,
-    isItLoading, nowPage,
-    totalUCount, unfollow,
-    usersPush
+    followDelete,
+    followPost,
+    getUsers,
+    getUsersUpdate,
 } from "../../../../redux/usersReducer";
 import FUsers from "./FUsers";
 
@@ -14,19 +12,19 @@ import FUsers from "./FUsers";
 class FUsersContainer extends React.Component {
 
     componentDidMount() {
-       this.props.getUsersThunkCreator(this.props.usersData, this.props.usersPageNumber, this.props.usersOnPageCount)
+       this.props.getUsers(this.props.usersData, this.props.usersPageNumber, this.props.usersOnPageCount)
     }
 
     onPageChanged = (p) => {
-        this.props.getUsersUpdateThunkCreator(p, this.props.usersOnPageCount)
+        this.props.getUsersUpdate(p, this.props.usersOnPageCount)
     }
 
     isOnFollow = (id) => {
-        this.props.followPostThunkCreator(id)
+        this.props.followPost(id)
     }
 
     isOnUnfollow = (id) => {
-        this.props.followDeleteThunkCreator(id)
+        this.props.followDelete(id)
     }
 
     render() {
@@ -57,15 +55,8 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    usersPush,
-    totalUCount,
-    nowPage,
-    fetchingStatus,
-    isItLoading,
-    getUsersThunkCreator,
-    getUsersUpdateThunkCreator,
-    followPostThunkCreator,
-    followDeleteThunkCreator,
+    getUsers,
+    getUsersUpdate,
+    followPost,
+    followDelete,
 })(FUsersContainer);

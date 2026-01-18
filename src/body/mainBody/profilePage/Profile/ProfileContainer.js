@@ -3,7 +3,7 @@ import {fetchingStatus, inputUserData} from "../../../../redux/profileReducer";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "../../../common/withRouter/WithRouter";
-import {getProfile} from "../../../../api/api";
+import {API} from "../../../../api/api";
 
 class ProfileContainer extends React.Component {
 
@@ -13,7 +13,7 @@ class ProfileContainer extends React.Component {
             profileId = 32717;
         }
         this.props.fetchingStatus(true);
-        getProfile(profileId).then((data) => {
+        API.getProfile(profileId).then((data) => {
             this.props.inputUserData(data);
             this.props.fetchingStatus(false);
         });

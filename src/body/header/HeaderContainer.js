@@ -2,17 +2,17 @@ import React from "react";
 import {connect} from "react-redux";
 import {fetchingStatus, setPhoto, setUserData} from "../../redux/authReducer";
 import {Header} from "./Header";
-import {getAuth, getProfile} from "../../api/api";
+import {API} from "../../api/api";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
         this.props.fetchingStatus(true);
-        getAuth().then(
+        API.getAuth().then(
             (data) => {
                 this.props.setUserData(data.data);
             })
             .then(() => {
-                getProfile(this.props.profileId).then((data) => {
+                API.getProfile(this.props.profileId).then((data) => {
                     this.props.setPhoto(data.photos.small);
                     this.props.fetchingStatus(false);
                 })
