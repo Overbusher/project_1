@@ -1,8 +1,9 @@
-import {combineReducers, legacy_createStore as createStore} from "redux";
+import {applyMiddleware, combineReducers, legacy_createStore as createStore} from "redux";
 import profileReducer from "./profileReducer";
 import messagesReducer from "./messagesReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
+import { thunk as thunkMiddleware } from 'redux-thunk'
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -11,7 +12,7 @@ let reducers = combineReducers({
     authPage: authReducer,
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 window.store = store;
 export default store;
