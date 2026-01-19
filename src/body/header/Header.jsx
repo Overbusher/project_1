@@ -7,17 +7,17 @@ export const Header = (props) => {
         <div className={st.header}>
             <div className={st.userHalf}>
                 <div>
-                    {props.login ?
-                        <div>
+                    {props.isAuth ? <div>
                             <img alt={"user IMG"}
                                  src={props?.photo ?? "https://cdn-icons-png.flaticon.com/512/6676/6676023.png"}/>
                             <div className={st.userName}>
                                 {props?.login}
                             </div>
-                        </div> :
+                        </div>
+                        :
                         <div>
                             <img alt={"user IMG"}
-                                 src={props?.photo ?? "https://cdn-icons-png.flaticon.com/512/6676/6676023.png"}/>
+                                 src={"https://cdn-icons-png.flaticon.com/512/6676/6676023.png"}/>
                             <div className={st.userName}>
                                 <div>
                                     Guest User
@@ -26,7 +26,8 @@ export const Header = (props) => {
                                     <NavLink to="/login">Login</NavLink>
                                 </div>
                             </div>
-                        </div>}
+                        </div>
+                    }
                 </div>
             </div>
             <div className={st.imageHalf}>

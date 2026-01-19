@@ -5,6 +5,7 @@ import {Routes, Route} from "react-router-dom";
 import {News} from "./news/News";
 import {Settings} from "./settings/Settings";
 import {FindUsers} from "./findUsers/FindUsers";
+import {Login} from "./login/Login";
 
 
 export const MainBody = () => {
@@ -17,6 +18,7 @@ export const MainBody = () => {
                     <Route path='/news' element={<News/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                     <Route path='/findusers' element={<FindUsers/>}/>
+                    <Route path='/login' element={<Login/>}/>
 
                 </Routes>
         </div>

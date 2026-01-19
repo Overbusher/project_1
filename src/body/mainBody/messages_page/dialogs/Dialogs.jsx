@@ -1,5 +1,5 @@
 import st from "./Dialogs.module.css"
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 
 export const Dialogs = (props) => {
 
@@ -9,6 +9,8 @@ export const Dialogs = (props) => {
         <div className={st.dialog} key={post.id}>
             <NavLink to={"/messages/" + post.id} className={activated}>{post.name}</NavLink>
         </div>)
+
+    if (!props.isAuth) return <Navigate to="/login"/>;
 
     return (
         <div className={st.dialogs}>

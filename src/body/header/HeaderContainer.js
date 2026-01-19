@@ -19,6 +19,7 @@ let mapStateToProps = (state) => {
         profileId: state.authPage.id,
         photo: state.authPage.photo,
         login: state.authPage.login,
+        isAuth: state.authPage.isAuth,
     }
 }
 

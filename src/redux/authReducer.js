@@ -6,6 +6,7 @@ let SET_PHOTO = 'SET_PHOTO';
 
 
 let initialState = {
+    isAuth: false,
     isFetching: false,
     id: null,
     login: null,
@@ -21,6 +22,7 @@ const authReducer = (state = initialState, action) => {
                 id: action.userData.id,
                 login: action.userData.login,
                 email: action.userData.email,
+                isAuth: true,
             }
         case IS_FETCHING:
             return {
@@ -46,11 +48,13 @@ export const getAuth = () => {
         dispatch(fetchingStatus(true))
         API.getAuth().then(
             (data) => {
+                if (data.resultCode === 0){
                 dispatch(setUserData(data.data))
                 API.getProfile(data.data.id).then((data) => {
                     dispatch(setPhoto(data.photos.small))
                     dispatch(fetchingStatus(false))
                 })
+                }
             })
     }
 }
