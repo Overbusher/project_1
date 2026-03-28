@@ -1,9 +1,9 @@
 import React from "react";
-import {getProfile} from "../../../../redux/profileReducer";
+import {getProfile, getStatusAPI, setStatus, setStatusAPI} from "../../../redux/profileReducer";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
-import {withRouter} from "../../../common/withRouter/WithRouter";
-import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
+import {withRouter} from "../../common/withRouter/WithRouter";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
@@ -14,6 +14,7 @@ class ProfileContainer extends React.Component {
             profileId = 32717;
         }
         this.props.getProfile(profileId);
+        this.props.getStatusAPI(profileId);
     }
 
     render() {
@@ -25,7 +26,9 @@ let mapStateToProps = (state) => {
     return {
         isFetching: state.profilePage.isFetching,
         userData: state.profilePage.userData,
+        status: state.profilePage.status,
     }
 }
 
-export default compose(connect(mapStateToProps, {getProfile}),withRouter,withAuthRedirect)(ProfileContainer)
+export default compose(connect(mapStateToProps, {getProfile, getStatusAPI, setStatusAPI, setStatus}),withRouter,withAuthRedirect)(ProfileContainer)
+

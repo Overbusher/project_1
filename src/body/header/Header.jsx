@@ -5,6 +5,9 @@ import {NavLink} from "react-router-dom";
 export const Header = (props) => {
     return (
         <div className={st.header}>
+            <div className={st.imageHalf}>
+                <img alt={"Header IMG"} src={headerImage}/>
+            </div>
             <div className={st.userHalf}>
                 <div>
                     {props.isAuth ? <div>
@@ -29,9 +32,6 @@ export const Header = (props) => {
                         </div>
                     }
                 </div>
-            </div>
-            <div className={st.imageHalf}>
-                <img alt={"Header IMG"} src={headerImage}/>
             </div>
         </div>
     )

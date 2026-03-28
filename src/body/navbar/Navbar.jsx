@@ -2,7 +2,7 @@ import st from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
 
 export const Navbar = () => {
-    let activated = ({isActive}) => isActive ? st.active : st.item;
+    let activated = ({isActive}) => isActive ? st.item_active : st.item;
     return (
         <nav className={st.navbar}>
             <div className={st.rs_fst}><NavLink to='/profile' className = {activated}>Home</NavLink></div>

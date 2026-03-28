@@ -7,6 +7,7 @@ import {
     getUsersUpdate,
 } from "../../../../redux/usersReducer";
 import FUsers from "./FUsers";
+import {compose} from "redux";
 
 
 class FUsersContainer extends React.Component {
@@ -54,9 +55,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {
+export default compose (connect(mapStateToProps, {
     getUsers,
     getUsersUpdate,
     followPost,
     followDelete,
-})(FUsersContainer);
+}))(FUsersContainer);

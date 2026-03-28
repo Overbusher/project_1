@@ -28,5 +28,11 @@ export const API = {
     getProfile(profileId) {
         return instance.get(`profile/${profileId}`).then(response => response.data);
     },
+    getStatus(profileId){
+        return instance.get(`/profile/status/${profileId}`).then(response => response.data);
+    },
+    setStatus(text){
+        return instance.put(`/profile/status`, {status: text}).then(response => response.data);
+    }
 
 }
