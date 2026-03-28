@@ -23,7 +23,6 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userData: action.userData,
-                status: action.userData.aboutMe,
             }
         }
         case SET_STATUS: {
@@ -56,7 +55,7 @@ export const getProfile = (profileId) => {
 export const getStatusAPI = (profileId) => {
     return (dispatch) => {
         API.getStatus(profileId).then((data) => {
-            dispatch(getStatus(data))
+            dispatch(getStatus(data ?? ""))
         });
     }
 }
