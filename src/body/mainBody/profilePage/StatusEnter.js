@@ -9,7 +9,7 @@ export const StatusEnter = (props) => {
     return (
         <div>
             <span>
-                <div>{!props.status ? null : "Описание: " + props.status}</div>
+                <div>{props.status ? null : "Описание: " + props.status}</div>
             </span>
             <span><input onChange={() => {nowTextInput()}}
                           ref={newPostElement} value={props.status}
